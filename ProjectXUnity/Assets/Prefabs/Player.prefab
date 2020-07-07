@@ -201,7 +201,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37b85672f0aef414ebe94c51aa5a80be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpForce: 5
+  jumpForce: 10
   checkerSize: {x: 4, y: 0.1}
   checkerPosition: {fileID: 8799943239551100966}
   groundMask:
