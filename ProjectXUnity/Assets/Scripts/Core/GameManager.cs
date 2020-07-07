@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Runner.Core {
     public class GameManager : MonoBehaviour {
-        bool isPlayerAlive;
+        bool isPlayerAlive = true;
 
         public bool IsPlayerAlive() {
             return isPlayerAlive;

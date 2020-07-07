@@ -8,6 +8,7 @@ namespace Runner.Enemy {
     public class EnemyGenerator : MonoBehaviour {
 
         [SerializeField] GameObject enemyToSpawn;
+        [SerializeField] Transform enemyParent;
         GameManager gameManager;
 
         [SerializeField] float minTimeBetweenSpawns;
@@ -24,7 +25,7 @@ namespace Runner.Enemy {
         }
 
         private void SpawnEnemy() {
-            Instantiate(enemyToSpawn, transform.position, Quaternion.identity);
+            Instantiate(enemyToSpawn, transform.position, Quaternion.identity, enemyParent);
         }
     }
 

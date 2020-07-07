@@ -37,7 +37,6 @@ namespace Runner.Player {
         }
 
         private bool IsGrounded() {
-            Debug.Log("Ground");
             bool isGrounded = Physics2D.OverlapBox(checkerPosition.position, checkerSize, 0, groundMask);
             return isGrounded;
         }
