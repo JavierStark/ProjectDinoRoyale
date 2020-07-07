@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2935680081569009914}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.58, y: -3.04, z: 0}
+  m_LocalPosition: {x: 0.249, y: -1.525, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2802868321388670204}
@@ -134,7 +134,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 5.1, y: 6.1}
+    oldSize: {x: 2.55, y: 3.05}
     newSize: {x: 4.100669, y: 4.824}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -142,13 +142,15 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.32327127, y: -3.0515747}
-      - {x: -2.5511503, y: -0.06348878}
-      - {x: -2.5711098, y: 0.44799733}
-      - {x: 0.46216774, y: 3.0782435}
-      - {x: 2.4045439, y: 2.0358946}
-      - {x: 2.5698154, y: -0.9250606}
-      - {x: 1.4428258, y: -3.041028}
+    - - {x: 1.1934876, y: 1.0126212}
+      - {x: 0.73110914, y: 1.5061895}
+      - {x: 0.075, y: 1.525}
+      - {x: -1.125, y: 0.39975762}
+      - {x: -1.2875404, y: 0.23094726}
+      - {x: -1.28127, y: -0.02451539}
+      - {x: -0.17451525, y: -1.5250001}
+      - {x: 0.73721695, y: -1.5250001}
+      - {x: 1.28127, y: -0.43078542}
 --- !u!95 &6804905512952732177
 Animator:
   serializedVersion: 3
@@ -202,7 +204,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpForce: 10
-  checkerSize: {x: 4, y: 0.1}
+  checkerSize: {x: 1, y: 0.1}
   checkerPosition: {fileID: 8799943239551100966}
   groundMask:
     serializedVersion: 2
