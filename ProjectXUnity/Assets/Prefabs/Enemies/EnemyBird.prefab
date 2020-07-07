@@ -17,7 +17,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 4.7247705, y: 2.916}
+    oldSize: {x: 6.3, y: 4.5}
     newSize: {x: 4.7247705, y: 2.916}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -25,15 +25,14 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 1.522, y: -0.098000005}
-      - {x: 0.96999985, y: -0.73}
-      - {x: 0.29000002, y: -1.4180001}
-      - {x: -0.634, y: -1.4580001}
-      - {x: -1.034, y: -0.25800002}
-      - {x: -2.362, y: -0.414}
-      - {x: -2.362, y: 1.4580001}
-      - {x: 2.266, y: 1.4580001}
-      - {x: 2.362, y: 0.17400001}
+    - - {x: 1.918767, y: -0.39557588}
+      - {x: 0.24259329, y: -2.3997288}
+      - {x: -0.66706395, y: -2.102747}
+      - {x: -1.3481066, y: -0.48944747}
+      - {x: -3.105939, y: -0.24868059}
+      - {x: -2.4446604, y: 2.3672583}
+      - {x: 3.1587262, y: 0.69752955}
+      - {x: 3.2051306, y: -0.12357581}
 --- !u!1001 &4365463413644251998
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -49,12 +48,12 @@ PrefabInstance:
     - target: {fileID: 7499560799610278495, guid: 89a408b611f552a44ace65dc04befb4d,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 4.565588
       objectReference: {fileID: 0}
     - target: {fileID: 7499560799610278495, guid: 89a408b611f552a44ace65dc04befb4d,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 1.9250429
       objectReference: {fileID: 0}
     - target: {fileID: 7499560799610278495, guid: 89a408b611f552a44ace65dc04befb4d,
         type: 3}
@@ -105,7 +104,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -4606939332582841142, guid: 03b3feb7d224ca0489bdaa7fd8d72b8d,
+      objectReference: {fileID: -6046281904296014970, guid: caac9a1dc7486b8489021b5b3754972e,
         type: 3}
     - target: {fileID: 8751916245490662032, guid: 89a408b611f552a44ace65dc04befb4d,
         type: 3}
