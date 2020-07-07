@@ -4,10 +4,32 @@ using UnityEngine;
 
 namespace Runner.Core {
     public class GameManager : MonoBehaviour {
+		[SerializeField]
         bool isPlayerAlive = true;
 
-        public bool IsPlayerAlive() {
-            return isPlayerAlive;
+		public static GameManager instance;
+		private void Awake()
+		{
+			if (instance == null)
+			{
+				instance = this;
+			}
+			else
+			{
+				Destroy(this);
+			}
+			DontDestroyOnLoad(gameObject);
+		}
+
+		public bool IsPlayerAlive {
+			get
+			{
+                return isPlayerAlive;
+			}
+			set
+			{
+				isPlayerAlive = value;
+			}
         }
     }
 
