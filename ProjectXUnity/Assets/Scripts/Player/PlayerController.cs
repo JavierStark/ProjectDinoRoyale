@@ -4,17 +4,21 @@ using System.Collections.Generic;
 using System.ComponentModel.Design;
 using System.Numerics;
 using UnityEditor;
+using UnityEditor.U2D.Path;
 using UnityEngine;
 
 namespace Runner.Player {
-    public class PlayerJump : MonoBehaviour {
+    public class PlayerController : MonoBehaviour {
 
         private float jump;
+        private float vertical;
         [Range(1, 30)] [SerializeField] float jumpForce;
         
         //References to components
         Rigidbody2D playerRB;
         Animator playerAnim;
+        [SerializeField] BoxCollider2D colliderRun;
+        [SerializeField] BoxCollider2D colliderCrouch;
 
         //Ground Checker
         [Header("Ground Checker")]
@@ -30,10 +34,23 @@ namespace Runner.Player {
 
         private void Update() {
             jump = Input.GetAxis("Jump");
+            vertical = Input.GetAxisRaw("Vertical");
+
             if (IsGrounded()) {
                 playerAnim.SetBool("IsJumping", false);
                 if(jump > 0){ Jump(); }                
             }            
+
+            if(vertical < 0) {
+                playerAnim.SetBool("IsCrouching",true);
+                colliderRun.enabled = false;
+                colliderCrouch.enabled = true;
+            }
+            else {
+                playerAnim.SetBool("IsCrouching", false);
+                colliderRun.enabled = true;
+                colliderCrouch.enabled = false;
+            }
         }
 
         private bool IsGrounded() {
