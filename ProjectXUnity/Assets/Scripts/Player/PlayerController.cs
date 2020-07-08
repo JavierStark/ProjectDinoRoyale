@@ -38,7 +38,7 @@ namespace Runner.Player {
 
             if (IsGrounded()) {
                 playerAnim.SetBool("IsJumping", false);
-                if(jump > 0){ Jump(); }
+                if(jump > 0) Jump();
 			}
 			          
 
@@ -55,8 +55,8 @@ namespace Runner.Player {
         }
 
         private bool IsGrounded() {
-            return Physics2D.Raycast(checkerPosition.position, new Vector2(0, -1), 0.01f);
-            //return Physics2D.OverlapBox(checkerPosition.position, checkerSize, 0, groundMask); //cpn esto siempre me devolvía false
+            //return Physics2D.Raycast(checkerPosition.position, new Vector2(0, -1), 0.01f);
+            return Physics2D.OverlapBox(checkerPosition.position, checkerSize, 0, groundMask); //cpn esto siempre me devolvía false
         }
 
         private void Jump() {
