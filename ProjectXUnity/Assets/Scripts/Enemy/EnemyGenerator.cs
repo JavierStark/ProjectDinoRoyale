@@ -16,8 +16,8 @@ namespace Runner.Enemy {
         float timeToWait;
 
         private IEnumerator Start() {
-            gameManager = FindObjectOfType<GameManager>();
-            while (gameManager.IsPlayerAlive()) {
+            gameManager = GameManager.instance;
+            while (gameManager.IsPlayerAlive) {
                 timeToWait = UnityEngine.Random.Range(minTimeBetweenSpawns, maxTimeBetweenSpawns);
                 yield return new WaitForSeconds(timeToWait);
                 SpawnEnemy();

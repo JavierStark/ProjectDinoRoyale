@@ -1,8 +1,8 @@
-﻿using System;
+﻿using Runner.Core;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.Design;
-using System.Numerics;
 using UnityEditor;
 using UnityEditor.U2D.Path;
 using UnityEngine;
@@ -22,7 +22,7 @@ namespace Runner.Player {
 
         //Ground Checker
         [Header("Ground Checker")]
-        [SerializeField] UnityEngine.Vector2 checkerSize;
+        [SerializeField] Vector2 checkerSize;
         [SerializeField] Transform checkerPosition;
         [SerializeField] LayerMask groundMask;
 
@@ -38,10 +38,11 @@ namespace Runner.Player {
 
             if (IsGrounded()) {
                 playerAnim.SetBool("IsJumping", false);
-                if(jump > 0){ Jump(); }                
-            }            
+                if(jump > 0) Jump();
+			}
+			          
 
-            if(vertical < 0) {
+            if(vertical < 0 && IsGrounded()) {
                 playerAnim.SetBool("IsCrouching",true);
                 colliderRun.enabled = false;
                 colliderCrouch.enabled = true;
@@ -54,8 +55,8 @@ namespace Runner.Player {
         }
 
         private bool IsGrounded() {
-            bool isGrounded = Physics2D.OverlapBox(checkerPosition.position, checkerSize, 0, groundMask);
-            return isGrounded;
+            //return Physics2D.Raycast(checkerPosition.position, new Vector2(0, -1), 0.01f);
+            return Physics2D.OverlapBox(checkerPosition.position, checkerSize, 0, groundMask); //cpn esto siempre me devolvía false
         }
 
         private void Jump() {
@@ -68,5 +69,19 @@ namespace Runner.Player {
             Gizmos.color = Color.grey;
             Gizmos.DrawWireCube(checkerPosition.position, checkerSize);
         }
-    }
+
+		private void OnTriggerEnter2D(Collider2D c)
+		{
+            if (c.CompareTag("Enemy"))
+            {
+                Debug.Log(gameObject + ": Me muero...");
+                GameManager.instance.IsPlayerAlive = false;
+            }
+            else
+            {
+                Debug.Log(c.name);
+            }
+        }
+	
+	}
 }
