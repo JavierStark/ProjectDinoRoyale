@@ -1,20 +1,24 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
+﻿using UnityEngine;
 
 namespace Runner.Core {
-    public class BackMovement : MonoBehaviour {
 
-        [Range(0,0.09f)][SerializeField] float soilVelocity;
-        RawImage soil;
+    public class BackMovement : MonoBehaviour {
+        Material material;
+        Vector2 offset;
+        [Range(0,100)][SerializeField] float velocity = 1;
+
+        private void Awake() {
+            material = GetComponent<Renderer>().material;
+        }
 
         private void Start() {
-            soil = GetComponent<RawImage>();
-        }
-        private void Update() {
             
-            soil.uvRect = new Rect(soil.uvRect.position + new Vector2(soilVelocity,0), soil.uvRect.size);
         }
+
+        private void Update() {
+            offset = new Vector2(velocity, 0);
+            material.mainTextureOffset += offset*Time.deltaTime;            
+        }
+
     }
 }

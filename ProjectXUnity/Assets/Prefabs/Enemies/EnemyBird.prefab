@@ -35,7 +35,7 @@ PolygonCollider2D:
       - {x: 0.8593378, y: -0.33565843}
       - {x: 1.5749998, y: -0.024999976}
       - {x: 1.5749998, y: 0.3543327}
---- !u!95 &504677637263476
+--- !u!95 &2293516242232180494
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 0
@@ -64,7 +64,7 @@ PrefabInstance:
     - target: {fileID: 5087682266015666970, guid: 89a408b611f552a44ace65dc04befb4d,
         type: 3}
       propertyPath: velocity
-      value: 5
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 5400883429449536226, guid: 89a408b611f552a44ace65dc04befb4d,
         type: 3}

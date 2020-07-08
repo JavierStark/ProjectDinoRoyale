@@ -40,14 +40,16 @@ namespace Runner.Player {
                 playerAnim.SetBool("IsJumping", false);
                 if(jump > 0) Jump();
 			}
-			          
 
-            if(vertical < 0 && IsGrounded()) {
+            print(vertical);
+            if(vertical < 0) {
+                playerRB.gravityScale = 3;
                 playerAnim.SetBool("IsCrouching",true);
                 colliderRun.enabled = false;
                 colliderCrouch.enabled = true;
             }
             else {
+                playerRB.gravityScale = 1.5f;
                 playerAnim.SetBool("IsCrouching", false);
                 colliderRun.enabled = true;
                 colliderCrouch.enabled = false;

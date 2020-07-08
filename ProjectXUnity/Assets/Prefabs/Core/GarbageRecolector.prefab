@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6409479522768020311}
   - component: {fileID: 7499856306990310417}
   - component: {fileID: 346664422283539041}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: GarbageRecolector
   m_TagString: Untagged
   m_Icon: {fileID: 0}

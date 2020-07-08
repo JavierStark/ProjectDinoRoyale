@@ -17,7 +17,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.9043106, y: 1.784}
+    oldSize: {x: 1.55, y: 1.75}
     newSize: {x: 1.9043106, y: 1.784}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -40,10 +40,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5087682266015666970, guid: 89a408b611f552a44ace65dc04befb4d,
+        type: 3}
+      propertyPath: velocity
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 5400883429449536226, guid: 89a408b611f552a44ace65dc04befb4d,
         type: 3}
       propertyPath: m_Name
       value: EnemyMeteorite
+      objectReference: {fileID: 0}
+    - target: {fileID: 7338859024694682496, guid: 89a408b611f552a44ace65dc04befb4d,
+        type: 3}
+      propertyPath: m_BodyType
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7499560799610278495, guid: 89a408b611f552a44ace65dc04befb4d,
         type: 3}
@@ -104,7 +114,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 157889199934833954, guid: 03b3feb7d224ca0489bdaa7fd8d72b8d,
+      objectReference: {fileID: 21300000, guid: 6dad958530454814b962c0bfb4dbfcc8,
         type: 3}
     - target: {fileID: 8751916245490662032, guid: 89a408b611f552a44ace65dc04befb4d,
         type: 3}
@@ -120,6 +130,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8751916245490662032, guid: 89a408b611f552a44ace65dc04befb4d,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 89a408b611f552a44ace65dc04befb4d, type: 3}
