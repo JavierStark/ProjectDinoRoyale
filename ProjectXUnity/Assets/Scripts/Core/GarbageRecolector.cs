@@ -5,7 +5,6 @@ using UnityEngine;
 namespace Runner.Core {
     public class GarbageRecolector : MonoBehaviour {
         private void OnTriggerEnter2D(Collider2D collision) {
-            print("destroy");
             Destroy(collision.gameObject);
         }
     }

@@ -41,7 +41,6 @@ namespace Runner.Player {
                 if(jump > 0) Jump();
 			}
 
-            print(vertical);
             if(vertical < 0) {
                 playerRB.gravityScale = 3;
                 playerAnim.SetBool("IsCrouching",true);
