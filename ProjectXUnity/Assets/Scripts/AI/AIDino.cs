@@ -15,7 +15,8 @@ public class AIDino : MonoBehaviour
     bool dead = false;
 
     [SerializeField] TMP_Text dinoName;
-    [SerializeField] Image image;
+    [SerializeField] Image faceImage;
+    [SerializeField] Image crossImage;
     [SerializeField] DinosScriptableObject dinoInfo;
     Animator animator;
 
@@ -32,10 +33,11 @@ public class AIDino : MonoBehaviour
     }
 
     private void InitialSetup() {
+        crossImage.enabled = false;
         animator = GetComponent<Animator>();
 
         dinoName.text = dinoInfo.GetName();
-        image.sprite = dinoInfo.GetFace();       
+        faceImage.sprite = dinoInfo.GetFace();       
 
         difficulty = ThrowDice(MAX_DIFFICULTY);
         minJumps = ThrowDice(4);
@@ -63,6 +65,7 @@ public class AIDino : MonoBehaviour
 
     private void Death() {
         animator.SetBool("isDead", true);
+        crossImage.enabled = true;
         dead = true;
     }
 }
