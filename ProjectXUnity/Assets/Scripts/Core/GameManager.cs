@@ -4,8 +4,10 @@ using UnityEngine;
 
 namespace Runner.Core {
     public class GameManager : MonoBehaviour {
-		[SerializeField]
-        bool isPlayerAlive = true;
+
+		[SerializeField] bool isPlayerAlive = true;
+		[SerializeField] DinosScriptableObject dinosScriptableObject;
+
 
 		public static GameManager instance;
 		private void Awake()
@@ -19,6 +21,8 @@ namespace Runner.Core {
 				Destroy(this);
 			}
 			DontDestroyOnLoad(gameObject);
+
+			dinosScriptableObject.Reset();
 		}
 
 		public bool IsPlayerAlive {

@@ -43,3 +43,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7c69657028cc8847a2f53cee7409354, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlayerAlive: 1
+  dinosScriptableObject: {fileID: 11400000, guid: fb984eb6cb639c44d99f522f9a575397,
+    type: 2}

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class AIDino : MonoBehaviour
@@ -14,15 +15,18 @@ public class AIDino : MonoBehaviour
     bool dead = false;
 
     [SerializeField] TMP_Text dinoName;
+    [SerializeField] Image image;
+    [SerializeField] DinosScriptableObject dinoInfo;
     Animator animator;
 
 
     IEnumerator Start()
-    {
+    {        
         InitialSetup();
 
         while (!dead) {
             yield return new WaitForSeconds(ThrowDice(MAX_TIME));
+
             TryJump();
         }
     }
@@ -30,11 +34,8 @@ public class AIDino : MonoBehaviour
     private void InitialSetup() {
         animator = GetComponent<Animator>();
 
-        for (int i = 0; i<transform.childCount; i++) {
-            dinoName = transform.GetChild(i).GetComponent<TMP_Text>();
-            if (dinoName != null) break;
-        }
-        if (dinoName == null) Debug.LogError("No hay texto con nombre");
+        dinoName.text = dinoInfo.GetName();
+        image.sprite = dinoInfo.GetFace();       
 
         difficulty = ThrowDice(MAX_DIFFICULTY);
         minJumps = ThrowDice(4);

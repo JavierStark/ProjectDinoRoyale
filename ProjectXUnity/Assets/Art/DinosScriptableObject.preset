@@ -1,0 +1,148 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!181963792 &2655988077585873504
+Preset:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: DinosScriptableObject
+  m_TargetType:
+    m_NativeTypeID: 114
+    m_ManagedTypePPtr: {fileID: 11500000, guid: 994f81db44566e24aa90908ef13c951c,
+      type: 3}
+    m_ManagedTypeFallback: 
+  m_Properties:
+  - target: {fileID: 0}
+    propertyPath: m_Enabled
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_EditorHideFlags
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_EditorClassIdentifier
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: dinosArray.Array.size
+    value: 9
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: dinosArray.Array.data[0].dinoName
+    value: D1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: dinosArray.Array.data[0].dinoSprite
+    value: 
+    objectReference: {fileID: -7213483659381278310, guid: 0d96c678f68ac544a87b67dcf2ed9b34,
+      type: 3}
+  - target: {fileID: 0}
+    propertyPath: dinosArray.Array.data[0].InUse
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: dinosArray.Array.data[1].dinoName
+    value: D2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: dinosArray.Array.data[1].dinoSprite
+    value: 
+    objectReference: {fileID: 6716855989739564705, guid: 0d96c678f68ac544a87b67dcf2ed9b34,
+      type: 3}
+  - target: {fileID: 0}
+    propertyPath: dinosArray.Array.data[1].InUse
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: dinosArray.Array.data[2].dinoName
+    value: D3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: dinosArray.Array.data[2].dinoSprite
+    value: 
+    objectReference: {fileID: -2871014982582269240, guid: 0d96c678f68ac544a87b67dcf2ed9b34,
+      type: 3}
+  - target: {fileID: 0}
+    propertyPath: dinosArray.Array.data[2].InUse
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: dinosArray.Array.data[3].dinoName
+    value: D4
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: dinosArray.Array.data[3].dinoSprite
+    value: 
+    objectReference: {fileID: -2924609450320159510, guid: 0d96c678f68ac544a87b67dcf2ed9b34,
+      type: 3}
+  - target: {fileID: 0}
+    propertyPath: dinosArray.Array.data[3].InUse
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: dinosArray.Array.data[4].dinoName
+    value: D5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: dinosArray.Array.data[4].dinoSprite
+    value: 
+    objectReference: {fileID: -2322291796059955606, guid: 0d96c678f68ac544a87b67dcf2ed9b34,
+      type: 3}
+  - target: {fileID: 0}
+    propertyPath: dinosArray.Array.data[4].InUse
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: dinosArray.Array.data[5].dinoName
+    value: D6
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: dinosArray.Array.data[5].dinoSprite
+    value: 
+    objectReference: {fileID: 5569493130289264238, guid: 0d96c678f68ac544a87b67dcf2ed9b34,
+      type: 3}
+  - target: {fileID: 0}
+    propertyPath: dinosArray.Array.data[5].InUse
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: dinosArray.Array.data[6].dinoName
+    value: D7
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: dinosArray.Array.data[6].dinoSprite
+    value: 
+    objectReference: {fileID: 3134943348756078817, guid: 0d96c678f68ac544a87b67dcf2ed9b34,
+      type: 3}
+  - target: {fileID: 0}
+    propertyPath: dinosArray.Array.data[6].InUse
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: dinosArray.Array.data[7].dinoName
+    value: D8
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: dinosArray.Array.data[7].dinoSprite
+    value: 
+    objectReference: {fileID: 5281130788601783828, guid: 0d96c678f68ac544a87b67dcf2ed9b34,
+      type: 3}
+  - target: {fileID: 0}
+    propertyPath: dinosArray.Array.data[7].InUse
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: dinosArray.Array.data[8].dinoName
+    value: D9
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: dinosArray.Array.data[8].dinoSprite
+    value: 
+    objectReference: {fileID: -3321262327221436695, guid: 0d96c678f68ac544a87b67dcf2ed9b34,
+      type: 3}
+  - target: {fileID: 0}
+    propertyPath: dinosArray.Array.data[8].InUse
+    value: 1
+    objectReference: {fileID: 0}
