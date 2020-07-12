@@ -1,10 +1,4 @@
 ﻿using Runner.Core;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.ComponentModel.Design;
-using UnityEditor;
-using UnityEditor.U2D.Path;
 using UnityEngine;
 
 namespace Runner.Player {
@@ -17,6 +11,7 @@ namespace Runner.Player {
         //References to components
         Rigidbody2D playerRB;
         Animator playerAnim;
+        AudioSource playerAudioSource;
         [SerializeField] BoxCollider2D colliderRun;
         [SerializeField] BoxCollider2D colliderCrouch;
 
@@ -26,10 +21,15 @@ namespace Runner.Player {
         [SerializeField] Transform checkerPosition;
         [SerializeField] LayerMask groundMask;
 
+        //Sound FX
+        [Header("Sound FX")]        
+        [SerializeField] AudioClip[] jumpSoundFXs = new AudioClip[3];
+
 
         private void Start() {
             playerRB = GetComponent<Rigidbody2D>();
             playerAnim = GetComponent<Animator>();
+            playerAudioSource = GetComponent<AudioSource>();
         }
 
         private void Update() {
@@ -61,8 +61,10 @@ namespace Runner.Player {
         }
 
         private void Jump() {
+            PlayJumpSFX();
+
             playerAnim.SetBool("IsJumping", true);
-            playerRB.velocity = new UnityEngine.Vector2(0, jumpForce);
+            playerRB.velocity = new Vector2(0, jumpForce);
         }
 
         //Draws the ground checker
@@ -82,6 +84,11 @@ namespace Runner.Player {
             {
                 Debug.Log(c.name);
             }
+        }
+
+        private void PlayJumpSFX() {
+            AudioClip clip = jumpSoundFXs[Random.Range(0, jumpSoundFXs.Length)];
+            playerAudioSource.PlayOneShot(clip);
         }
 	
 	}

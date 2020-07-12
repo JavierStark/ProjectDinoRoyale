@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2935680081569009914}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.249, y: -1.525, z: 0}
+  m_LocalPosition: {x: 0.154, y: -1.009, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2802868321388670204}
@@ -170,9 +170,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37b85672f0aef414ebe94c51aa5a80be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpForce: 10
-  colliderRun: {fileID: 0}
-  colliderCrouch: {fileID: 0}
+  jumpForce: 20
+  colliderRun: {fileID: 6508555451880373420}
+  colliderCrouch: {fileID: 8071624072052705225}
   checkerSize: {x: 1, y: 0.1}
   checkerPosition: {fileID: 8799943239551100966}
   groundMask:
@@ -191,18 +191,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.14679718, y: 0.00793457}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.55, y: 3.05}
+    oldSize: {x: 1.7, y: 2.0333333}
     newSize: {x: 5.1, y: 6.1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.55, y: 3.0500002}
+  m_Size: {x: 1.3994246, y: 2.050191}
   m_EdgeRadius: 0
 --- !u!61 &8071624072052705225
 BoxCollider2D:
@@ -217,16 +217,16 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.004323721, y: -0.14836383}
+  m_Offset: {x: 0.250309, y: -0.34721434}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.55, y: 3.05}
+    oldSize: {x: 1.7, y: 2.0333333}
     newSize: {x: 5.1, y: 6.1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 3.8210502, y: 0.94085073}
+  m_Size: {x: 2.0277405, y: 1.3385518}
   m_EdgeRadius: 0
