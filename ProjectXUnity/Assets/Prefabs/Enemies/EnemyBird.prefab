@@ -17,7 +17,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 3.15, y: 2.25}
+    oldSize: {x: 2.1, y: 1.5}
     newSize: {x: 4.7247705, y: 2.916}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -25,16 +25,11 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.39233112, y: 0.5596621}
-      - {x: -1.0036836, y: 1.1560011}
-      - {x: -1.2613304, y: 1.0733316}
-      - {x: -1.438065, y: 0.77439094}
-      - {x: -1.575, y: -0.0839901}
-      - {x: -0.3203206, y: -1.0629982}
-      - {x: 0.16832733, y: -1.1766682}
-      - {x: 0.8593378, y: -0.33565843}
-      - {x: 1.5749998, y: -0.024999976}
-      - {x: 1.5749998, y: 0.3543327}
+    - - {x: -0.6346917, y: 0.76832604}
+      - {x: -1.033092, y: -0.0519073}
+      - {x: -0.18650246, y: -0.69276845}
+      - {x: 0.083575726, y: -0.7707536}
+      - {x: 1.091032, y: 0.17646766}
 --- !u!95 &2293516242232180494
 Animator:
   serializedVersion: 3
@@ -64,7 +59,7 @@ PrefabInstance:
     - target: {fileID: 5087682266015666970, guid: 89a408b611f552a44ace65dc04befb4d,
         type: 3}
       propertyPath: velocity
-      value: 7
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 5400883429449536226, guid: 89a408b611f552a44ace65dc04befb4d,
         type: 3}
