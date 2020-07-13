@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6254282909088455956}
   - component: {fileID: 8867230385883174694}
+  - component: {fileID: 427807319}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -46,3 +47,17 @@ MonoBehaviour:
   isPlayerAlive: 1
   dinosScriptableObject: {fileID: 11400000, guid: fb984eb6cb639c44d99f522f9a575397,
     type: 2}
+--- !u!114 &427807319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6791009537517115246}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 535a7fe443e6803428c26f83b6d1af7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tmpScore: {fileID: 0}
+  scoreMultiplier: 0

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Runner.Enemy;
 
 namespace Runner.Core {
     public class GameManager : MonoBehaviour {
@@ -8,16 +9,15 @@ namespace Runner.Core {
 		[SerializeField] bool isPlayerAlive = true;
 		[SerializeField] DinosScriptableObject dinosScriptableObject;
 
+		EnemyGenerator[] generators;
 
 		public static GameManager instance;
-		private void Awake()
-		{
-			if (instance == null)
-			{
+
+		private void Awake(){ 
+			if (instance == null){ 
 				instance = this;
 			}
-			else
-			{
+            else{ 
 				Destroy(this);
 			}
 			DontDestroyOnLoad(gameObject);
@@ -25,16 +25,29 @@ namespace Runner.Core {
 			dinosScriptableObject.Reset();
 		}
 
-		public bool IsPlayerAlive {
-			get
-			{
+        private void Start() {
+			generators = FindObjectsOfType<EnemyGenerator>();
+			StartCoroutine(Generate());
+		}
+
+        public bool IsPlayerAlive{
+			get{
                 return isPlayerAlive;
 			}
-			set
-			{
+			set{
 				isPlayerAlive = value;
 			}
         }
+
+		private IEnumerator Generate() {
+			int randomGenerator = Random.Range(0, generators.Length);
+			yield return generators[randomGenerator].Spawn();
+
+            if (IsPlayerAlive) {
+				StartCoroutine(Generate());
+            }
+        }	
+
     }
 
 }

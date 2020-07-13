@@ -307,26 +307,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &427807318 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6791009537517115246, guid: f0cda6ecdc0d3e644b2d6efe207cbb00,
-    type: 3}
-  m_PrefabInstance: {fileID: 4119357802116423815}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &427807319
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 427807318}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 535a7fe443e6803428c26f83b6d1af7f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tmpScore: {fileID: 1010086131}
-  scoreMultiplier: 0
 --- !u!4 &622115771 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6784782950824665691, guid: 6e46d63b7c4b13446a54de52833171e2,
@@ -1446,11 +1426,21 @@ PrefabInstance:
       propertyPath: enemyParent
       value: 
       objectReference: {fileID: 422066658}
+    - target: {fileID: 2024662052663921167, guid: 4ec9c04b539519b41b1c03f5e8720576,
+        type: 3}
+      propertyPath: maxTimeBetweenSpawns
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 2109164414546115331, guid: 4ec9c04b539519b41b1c03f5e8720576,
         type: 3}
       propertyPath: enemyParent
       value: 
       objectReference: {fileID: 422066658}
+    - target: {fileID: 2109164414546115331, guid: 4ec9c04b539519b41b1c03f5e8720576,
+        type: 3}
+      propertyPath: maxTimeBetweenSpawns
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 2337217640003683592, guid: 4ec9c04b539519b41b1c03f5e8720576,
         type: 3}
       propertyPath: m_LocalPosition.y
@@ -1540,6 +1530,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 427807319, guid: f0cda6ecdc0d3e644b2d6efe207cbb00, type: 3}
+      propertyPath: tmpScore
+      value: 
+      objectReference: {fileID: 1010086131}
     - target: {fileID: 6254282909088455956, guid: f0cda6ecdc0d3e644b2d6efe207cbb00,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1709,6 +1703,11 @@ PrefabInstance:
       propertyPath: jumpSoundFXs.Array.data[2]
       value: 
       objectReference: {fileID: 8300000, guid: 81b522f986dde974d8c37d129d484a6f, type: 3}
+    - target: {fileID: 6804905512952732182, guid: 69d619287bc0e6444932071d989b5806,
+        type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 69d619287bc0e6444932071d989b5806, type: 3}
 --- !u!1001 &8272582167739907608
