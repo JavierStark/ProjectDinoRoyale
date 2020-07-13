@@ -38,12 +38,16 @@ namespace Runner.Player {
 
             if (IsGrounded()) {
                 playerAnim.SetBool("IsJumping", false);
-                if(jump > 0) Jump();
-			}
+                if (jump > 0) Jump();
+            }
 
-            if(vertical < 0) {
+            Crouch();
+        }
+
+        private void Crouch() {
+            if (vertical < 0) {
                 playerRB.gravityScale = 3;
-                playerAnim.SetBool("IsCrouching",true);
+                playerAnim.SetBool("IsCrouching", true);
                 colliderRun.enabled = false;
                 colliderCrouch.enabled = true;
             }
@@ -61,7 +65,7 @@ namespace Runner.Player {
         }
 
         private void Jump() {
-            PlayJumpSFX();
+            PlayJumpSFX();      
 
             playerAnim.SetBool("IsJumping", true);
             playerRB.velocity = new Vector2(0, jumpForce);
@@ -87,8 +91,10 @@ namespace Runner.Player {
         }
 
         private void PlayJumpSFX() {
+            print("sound");
             AudioClip clip = jumpSoundFXs[Random.Range(0, jumpSoundFXs.Length)];
-            playerAudioSource.PlayOneShot(clip);
+            playerAudioSource.clip = clip;
+            playerAudioSource.Play();
         }
 	
 	}

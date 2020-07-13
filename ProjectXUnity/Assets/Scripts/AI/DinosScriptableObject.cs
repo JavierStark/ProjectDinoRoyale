@@ -26,11 +26,9 @@ public class DinosScriptableObject : ScriptableObject
         for (int i = 0; i<faces.Length; i++) {
             faces[i].inUse = false;
         }
-        Debug.Log("reset");
     }
 
     public string GetName() {
-        Debug.Log("get name");
         string name = null;
         while (name == null) {
             int randomIndex = Random.Range(0, names.Length);
@@ -44,7 +42,6 @@ public class DinosScriptableObject : ScriptableObject
     }
 
     public Sprite GetFace() {
-        Debug.Log("get face");
         Sprite face = null;
         while (face == null) {
             int randomIndex = Random.Range(0, faces.Length);
@@ -53,7 +50,7 @@ public class DinosScriptableObject : ScriptableObject
                 faces[randomIndex].inUse = true;
             }            
         }
-        Debug.Log(face);
+
         return face;
     }
 }
