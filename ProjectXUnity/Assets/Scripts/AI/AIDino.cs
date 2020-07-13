@@ -13,7 +13,6 @@ public class AIDino : MonoBehaviour
     int difficulty;
     int minJumps;
     bool dead = false;
-       
 
     [SerializeField] TMP_Text dinoName;
     [SerializeField] Image faceImage;
