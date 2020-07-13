@@ -1,16 +1,16 @@
 ﻿using Runner.Core;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
 public class ScoreManager : MonoBehaviour
 {
-    // Start is called before the first frame update
     [SerializeField] TextMeshProUGUI tmpScore;
+    [SerializeField] TextMeshProUGUI tmpPosition;
     [SerializeField] int scoreMultiplier;
+    [SerializeField] int enemiesAlive = 9;
 
     int score;
+
     void Start()
     {
         //Esto solo lo he puesto x si se nos olvida setearlo desde el editor de Unity, q nunca explote
@@ -18,6 +18,8 @@ public class ScoreManager : MonoBehaviour
 		{
             scoreMultiplier = 1;
 		}
+
+        tmpPosition.text = "10";
     }
 
     // Update is called once per frame
@@ -27,12 +29,17 @@ public class ScoreManager : MonoBehaviour
 		{
             IncreaseScore();
         }
-       
-        tmpScore.text = "Score: " + score;
+              
     }
 
     void IncreaseScore()
 	{
         score = (int)Time.fixedTime * scoreMultiplier;
-	}
+        tmpScore.text = "Score: " + score;
+    }
+
+    public void EnemyDied (){
+        enemiesAlive--;
+        tmpPosition.text = (enemiesAlive+1).ToString();
+    }
 }

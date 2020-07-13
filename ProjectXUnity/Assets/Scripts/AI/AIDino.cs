@@ -68,5 +68,7 @@ public class AIDino : MonoBehaviour
         animator.SetBool("isDead", true);
         crossImage.enabled = true;
         dead = true;
+
+        FindObjectOfType<ScoreManager>().EnemyDied();
     }
 }
