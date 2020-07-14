@@ -26,12 +26,13 @@ public class AIDino : MonoBehaviour
     {        
         InitialSetup();
 
-        while (!dead) {
-            yield return new WaitForSeconds(ThrowDice(MAX_TIME));
+        //while (!dead) {
+        //yield return null;
+		yield return new WaitForSeconds(ThrowDice(MAX_TIME));
 
-            TryJump();
-        }
-    }
+		//    TryJump();
+		//}
+	}
 
     private void InitialSetup() {
         crossImage.enabled = false;

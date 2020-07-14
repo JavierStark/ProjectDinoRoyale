@@ -20,8 +20,8 @@ namespace Runner.Core {
             else{ 
 				Destroy(this);
 			}
+			
 			DontDestroyOnLoad(gameObject);
-
 			dinosScriptableObject.Reset();
 		}
 
