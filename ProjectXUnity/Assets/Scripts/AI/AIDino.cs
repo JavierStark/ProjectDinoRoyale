@@ -24,14 +24,14 @@ public class AIDino : MonoBehaviour
 
     IEnumerator Start()
     {        
+        print("hola");
         InitialSetup();
 
-        //while (!dead) {
-        //yield return null;
-		yield return new WaitForSeconds(ThrowDice(MAX_TIME));
+        while (!dead) {
+		    yield return new WaitForSeconds(ThrowDice(MAX_TIME));
 
-		//    TryJump();
-		//}
+		    TryJump();
+		}
 	}
 
     private void InitialSetup() {
@@ -39,6 +39,7 @@ public class AIDino : MonoBehaviour
         animator = GetComponent<Animator>();
 
         dinoName.text = dinoInfo.GetName();
+        print(dinoName.text);
         faceImage.sprite = dinoInfo.GetFace();       
 
         difficulty = ThrowDice(MAX_DIFFICULTY);
