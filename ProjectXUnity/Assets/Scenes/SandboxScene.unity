@@ -678,6 +678,49 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6e46d63b7c4b13446a54de52833171e2, type: 3}
+--- !u!1 &924035059
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 924035061}
+  - component: {fileID: 924035060}
+  m_Layer: 0
+  m_Name: FileManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &924035060
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 924035059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 868ee714622174a4b9e1d20095bb01ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &924035061
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 924035059}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 342.23297, y: 493.47134, z: -149.3125}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &961602853 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6784782950824665691, guid: 6e46d63b7c4b13446a54de52833171e2,
@@ -2070,12 +2113,12 @@ PrefabInstance:
         type: 3}
       propertyPath: jumpSoundFXs.Array.data[0]
       value: 
-      objectReference: {fileID: 8300000, guid: 4522e3e2187e6054b9a60be8563da963, type: 3}
+      objectReference: {fileID: 8300000, guid: 8337311b92e19b34ea51430dbd64ec0f, type: 3}
     - target: {fileID: 6804905512952732181, guid: 69d619287bc0e6444932071d989b5806,
         type: 3}
       propertyPath: jumpSoundFXs.Array.data[1]
       value: 
-      objectReference: {fileID: 8300000, guid: 81b522f986dde974d8c37d129d484a6f, type: 3}
+      objectReference: {fileID: 8300000, guid: 85b3d4c26b21a574894972a93784a3b9, type: 3}
     - target: {fileID: 6804905512952732181, guid: 69d619287bc0e6444932071d989b5806,
         type: 3}
       propertyPath: jumpSoundFXs.Array.data[2]

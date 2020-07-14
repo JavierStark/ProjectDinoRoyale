@@ -13,23 +13,25 @@ MonoBehaviour:
   m_Name: Dinos
   m_EditorClassIdentifier: 
   names:
-  - dinoName: 1
+  - dinoName: Names1
     inUse: 1
-  - dinoName: 2
+  - dinoName: Names2
     inUse: 1
-  - dinoName: 3
+  - dinoName: Names3
     inUse: 1
-  - dinoName: 4
+  - dinoName: Names4
     inUse: 1
-  - dinoName: 5
+  - dinoName: Names5
     inUse: 1
-  - dinoName: 6
+  - dinoName: Names6
+    inUse: 0
+  - dinoName: Names7
     inUse: 1
-  - dinoName: 7
+  - dinoName: Names8
     inUse: 1
-  - dinoName: 8
+  - dinoName: Names9
     inUse: 1
-  - dinoName: 9
+  - dinoName: Names10
     inUse: 1
   faces:
   - dinoSprite: {fileID: -7213483659381278310, guid: 0d96c678f68ac544a87b67dcf2ed9b34,

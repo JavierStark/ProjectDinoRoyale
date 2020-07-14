@@ -1,10 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 [CreateAssetMenu(menuName = "Dinos")]
 public class DinosScriptableObject : ScriptableObject
-{
+{    
+    
+
     [System.Serializable]
     public class Name {
         public string dinoName;
@@ -16,11 +16,13 @@ public class DinosScriptableObject : ScriptableObject
         public bool inUse = false;
     }
 
-    public Name[] names;
-    public Face[] faces;
+    [SerializeField] private Name[] names;
+    [SerializeField] private Face[] faces;
 
     public void Reset() {
+        FileManager fileManager = FindObjectOfType<FileManager>();
         for (int i = 0; i<names.Length; i++) {
+            names[i].dinoName = fileManager.ReadFile()[i];
             names[i].inUse = false;
         }
         for (int i = 0; i<faces.Length; i++) {
@@ -37,7 +39,6 @@ public class DinosScriptableObject : ScriptableObject
                 names[randomIndex].inUse = true;
             }
         }
-        Debug.Log(name);
         return name;
     }
 
@@ -53,4 +54,6 @@ public class DinosScriptableObject : ScriptableObject
 
         return face;
     }
+
+
 }
