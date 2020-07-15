@@ -47,6 +47,7 @@ MonoBehaviour:
   isPlayerAlive: 1
   dinosScriptableObject: {fileID: 11400000, guid: fb984eb6cb639c44d99f522f9a575397,
     type: 2}
+  gameOverCanvas: {fileID: 0}
 --- !u!114 &427807319
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -60,4 +61,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tmpScore: {fileID: 0}
+  tmpPosition: {fileID: 0}
   scoreMultiplier: 0
+  enemiesAlive: 9

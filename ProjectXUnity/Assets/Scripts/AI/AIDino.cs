@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Runner.Core;
 
 public class AIDino : MonoBehaviour
 {
@@ -24,13 +25,13 @@ public class AIDino : MonoBehaviour
 
     IEnumerator Start()
     {        
-        print("hola");
         InitialSetup();
 
         while (!dead) {
+            if (!GameManager.instance.IsPlayerAlive) break;
 		    yield return new WaitForSeconds(ThrowDice(MAX_TIME));
-
-		    TryJump();
+            if (!GameManager.instance.IsPlayerAlive) break;
+            TryJump();
 		}
 	}
 
@@ -39,7 +40,6 @@ public class AIDino : MonoBehaviour
         animator = GetComponent<Animator>();
 
         dinoName.text = dinoInfo.GetName();
-        print(dinoName.text);
         faceImage.sprite = dinoInfo.GetFace();       
 
         difficulty = ThrowDice(MAX_DIFFICULTY);

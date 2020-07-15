@@ -83,6 +83,7 @@ namespace Runner.Player {
             {
                 Debug.Log(gameObject + ": Me muero...");
                 GameManager.instance.IsPlayerAlive = false;
+                GameManager.instance.GameOver();
             }
             else
             {

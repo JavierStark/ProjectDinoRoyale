@@ -1,4 +1,5 @@
 ﻿using Runner.Core;
+using System.Collections;
 using TMPro;
 using UnityEngine;
 
@@ -13,6 +14,7 @@ public class ScoreManager : MonoBehaviour
 
     void Start()
     {
+        GameManager.instance.IsPlayerAlive = true;
         //Esto solo lo he puesto x si se nos olvida setearlo desde el editor de Unity, q nunca explote
         if (scoreMultiplier <= 0)
 		{
@@ -20,22 +22,28 @@ public class ScoreManager : MonoBehaviour
 		}
 
         tmpPosition.text = "10";
+
+        StartCoroutine(IncreaseScore());
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (GameManager.instance.IsPlayerAlive)
-		{
-            IncreaseScore();
-        }
+
               
     }
 
-    void IncreaseScore()
+    private IEnumerator IncreaseScore()
 	{
-        score = (int)Time.fixedTime * scoreMultiplier;
-        tmpScore.text = "Score: " + score;
+        if (GameManager.instance.IsPlayerAlive) {
+            yield return new WaitForSeconds(1f);
+            score++;
+            tmpScore.text = "Score: " + score; 
+            if (GameManager.instance.IsPlayerAlive)
+		    {
+                StartCoroutine(IncreaseScore());
+            }
+        }
     }
 
     public void EnemyDied (){

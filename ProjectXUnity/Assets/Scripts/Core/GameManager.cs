@@ -8,27 +8,27 @@ namespace Runner.Core {
 
 		[SerializeField] bool isPlayerAlive = true;
 		[SerializeField] DinosScriptableObject dinosScriptableObject;
+		[SerializeField] Canvas gameOverCanvas;
 
 		EnemyGenerator[] generators;
 
 		public static GameManager instance;
 
-		private void Awake(){ 
-			if (instance == null){ 
-				instance = this;
-			}
-            else{ 
-				Destroy(this);
-			}
+		private void Awake(){
+			instance = this;
 			
-			DontDestroyOnLoad(gameObject);
 			dinosScriptableObject.Reset();
 		}
 
         private void Start() {
-			generators = FindObjectsOfType<EnemyGenerator>();
-			StartCoroutine(Generate());
+            if(IsPlayerAlive){
+				generators = FindObjectsOfType<EnemyGenerator>();
+				Time.timeScale = 1;
+				gameOverCanvas.gameObject.SetActive(false);
+				StartCoroutine(Generate());
+            }
 		}
+
 
         public bool IsPlayerAlive{
 			get{
@@ -40,14 +40,18 @@ namespace Runner.Core {
         }
 
 		private IEnumerator Generate() {
-			int randomGenerator = Random.Range(0, generators.Length);
-			yield return generators[randomGenerator].Spawn();
-
-            if (IsPlayerAlive) {
+			if (IsPlayerAlive) {
+				print("alive");
+				int randomGenerator = Random.Range(0, generators.Length);
+				yield return generators[randomGenerator].Spawn();
 				StartCoroutine(Generate());
-            }
+			}			
         }	
 
-    }
+		public void GameOver() {
+			print("gameOver");
+			gameOverCanvas.gameObject.SetActive(true);
+		}
+	}
 
 }
