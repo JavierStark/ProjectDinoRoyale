@@ -2,23 +2,41 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ScoreManager : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI tmpScore;
+    [SerializeField] TextMeshProUGUI tmpCoins;
     [SerializeField] TextMeshProUGUI tmpPosition;
-    [SerializeField] int scoreMultiplier;
+    [SerializeField] float scoreDelay;
+    [SerializeField] int coinMultiplier;
     [SerializeField] int enemiesAlive = 9;
 
+    int coins;
     int score;
 
-    void Start()
+    public static ScoreManager instance;
+
+	private void Awake()
+	{
+	    if (instance == null)
+		{
+            instance = this;
+		}
+		else
+		{
+            Destroy(this);
+		}
+	}
+
+	void Start()
     {
         GameManager.instance.IsPlayerAlive = true;
         //Esto solo lo he puesto x si se nos olvida setearlo desde el editor de Unity, q nunca explote
-        if (scoreMultiplier <= 0)
+        if (scoreDelay <= 0)
 		{
-            scoreMultiplier = 1;
+            scoreDelay = 1;
 		}
 
         tmpPosition.text = "10";
@@ -26,19 +44,15 @@ public class ScoreManager : MonoBehaviour
         StartCoroutine(IncreaseScore());
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-              
-    }
 
     private IEnumerator IncreaseScore()
 	{
         if (GameManager.instance.IsPlayerAlive) {
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(scoreDelay);
             score++;
-            tmpScore.text = "Score: " + score; 
+            coins++;
+            tmpScore.text = "Score: " + score;
+            tmpCoins.text = "Coins: " + coins;
             if (GameManager.instance.IsPlayerAlive)
 		    {
                 StartCoroutine(IncreaseScore());
@@ -50,4 +64,14 @@ public class ScoreManager : MonoBehaviour
         enemiesAlive--;
         tmpPosition.text = (enemiesAlive+1).ToString();
     }
+
+    public int GetScore()
+	{
+        return score;
+	}
+
+    public int GetCoins()
+	{
+        return coins;
+	}
 }
