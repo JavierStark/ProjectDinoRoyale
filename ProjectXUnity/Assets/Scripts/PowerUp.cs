@@ -15,6 +15,9 @@ public class PowerUp : MonoBehaviour, IPointerClickHandler
     [SerializeField] int diceFaces;
     [SerializeField] int difficultyToHit;
 
+    int dinosNumber;
+    AIDino[] dinosArray;
+
     bool available = false;
 
     public enum PowerUpTypeEnum { METEOR, INVINCIBILITY}
@@ -37,8 +40,10 @@ public class PowerUp : MonoBehaviour, IPointerClickHandler
 		
 	}
 
-	void Start()
-    {
+	void Start(){
+        dinosNumber = FindObjectsOfType<AIDino>().Length;
+        dinosArray = FindObjectsOfType<AIDino>();
+
         TMP_Text txtPrice = gameObject.GetComponentInChildren<TMP_Text>();
         if (txtPrice != null)
 		{
@@ -64,8 +69,7 @@ public class PowerUp : MonoBehaviour, IPointerClickHandler
 
     void MeteorPower(){
         ScoreManager.instance.PayScore(price);
-        int dinosNumber = FindObjectsOfType<AIDino>().Length;
-        AIDino[] dinosArray = FindObjectsOfType<AIDino>();
+
 
         for(int i = 0; i<dinosNumber; i++) {
             bool used = false;
