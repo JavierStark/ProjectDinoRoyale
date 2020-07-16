@@ -41,7 +41,6 @@ namespace Runner.Core {
 
 		private IEnumerator Generate() {
 			if (IsPlayerAlive) {
-				print("alive");
 				int randomGenerator = Random.Range(0, generators.Length);
 				yield return generators[randomGenerator].Spawn();
 				StartCoroutine(Generate());
@@ -49,7 +48,6 @@ namespace Runner.Core {
         }	
 
 		public void GameOver() {
-			print("gameOver");
 			gameOverCanvas.gameObject.SetActive(true);
 		}
 	}

@@ -1,5 +1,6 @@
 ﻿using Runner.Core;
 using UnityEngine;
+using System.Collections;
 
 namespace Runner.Player {
     public class PlayerController : MonoBehaviour {
@@ -7,6 +8,7 @@ namespace Runner.Player {
         private float jump;
         private float vertical;
         [Range(1, 30)] [SerializeField] float jumpForce;
+        bool invincible = false;
         
         //References to components
         Rigidbody2D playerRB;
@@ -79,23 +81,29 @@ namespace Runner.Player {
 
 		private void OnTriggerEnter2D(Collider2D c)
 		{
-            if (c.CompareTag("Enemy"))
-            {
-                Debug.Log(gameObject + ": Me muero...");
-                GameManager.instance.IsPlayerAlive = false;
-                GameManager.instance.GameOver();
-            }
-            else
-            {
-                Debug.Log(c.name);
+            if (!invincible) {
+                if (c.CompareTag("Enemy"))
+                {
+                    GameManager.instance.IsPlayerAlive = false;
+                    GameManager.instance.GameOver();
+                }
+                else
+                {
+                    Debug.Log(c.name);
+                }
             }
         }
 
         private void PlayJumpSFX() {
-            print("sound");
             AudioClip clip = jumpSoundFXs[Random.Range(0, jumpSoundFXs.Length)];
             playerAudioSource.clip = clip;
             playerAudioSource.Play();
+        }
+
+        public IEnumerator Invincible(int s) {
+            invincible = true;
+            yield return new WaitForSeconds(s);
+            invincible = false;
         }
 	
 	}

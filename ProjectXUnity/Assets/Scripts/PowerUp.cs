@@ -1,19 +1,23 @@
-﻿using Runner.Core;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using TMPro;
+using Runner.Player;
 
 public class PowerUp : MonoBehaviour, IPointerClickHandler
 {
 
     [SerializeField] int price;
     [SerializeField] PowerUpTypeEnum powerUpType;
+    [Header("Invincibility")]
+    [SerializeField] int invincibilityDuration;
+    [Header("Meteorite")]
+    [SerializeField] int diceFaces;
+    [SerializeField] int difficultyToHit;
 
     bool available = false;
 
-    public enum PowerUpTypeEnum { METEOR, WAVE, GLACIATION }
+    public enum PowerUpTypeEnum { METEOR, INVINCIBILITY}
 
 	public void OnPointerClick(PointerEventData eventData)
 	{
@@ -24,13 +28,10 @@ public class PowerUp : MonoBehaviour, IPointerClickHandler
                 case PowerUpTypeEnum.METEOR:
                     MeteorPower();
                     break;
-                case PowerUpTypeEnum.WAVE:
-                    WavePower();
+                case PowerUpTypeEnum.INVINCIBILITY:
+                    Invincibility();
                     break;
-                case PowerUpTypeEnum.GLACIATION:
-                    GlaciationPower();
-                    break;
-
+                default: break;
             }
         }
 		
@@ -38,16 +39,16 @@ public class PowerUp : MonoBehaviour, IPointerClickHandler
 
 	void Start()
     {
-        Text txtPrice = gameObject.GetComponentInChildren<Text>();
+        TMP_Text txtPrice = gameObject.GetComponentInChildren<TMP_Text>();
         if (txtPrice != null)
 		{
-            txtPrice.text = "" + price;
+            txtPrice.text = price.ToString();
 		}
     }
 
     void Update()
     {
-        if (price <= ScoreManager.instance.GetCoins())
+        if (price <= ScoreManager.instance.GetScore())
 		{
             gameObject.GetComponent<Image>().color = Color.white;
             available = true;
@@ -61,18 +62,26 @@ public class PowerUp : MonoBehaviour, IPointerClickHandler
 
     }
 
-    void MeteorPower()
-	{
-        Debug.Log("Activando MeteorPower");
+    void MeteorPower(){
+        ScoreManager.instance.PayScore(price);
+        int dinosNumber = FindObjectsOfType<AIDino>().Length;
+        AIDino[] dinosArray = FindObjectsOfType<AIDino>();
+
+        for(int i = 0; i<dinosNumber; i++) {
+            bool used = false;
+            if (dinosArray[i].IsAlive()) {
+                used = true;
+                dinosArray[i].Attacked(diceFaces, difficultyToHit);
+                print(dinosArray[i].name + " attacked");
+            }
+            if (used) {
+                return;
+            }
+        }
 	}
 
-    void WavePower()
-	{
-        Debug.Log("Activando WavePower");
-    }
-
-    void GlaciationPower()
-	{
-        Debug.Log("Activando GlacialPower");
+    void Invincibility() {
+        ScoreManager.instance.PayScore(price);
+        StartCoroutine(FindObjectOfType<PlayerController>().Invincible(invincibilityDuration));
     }
 }

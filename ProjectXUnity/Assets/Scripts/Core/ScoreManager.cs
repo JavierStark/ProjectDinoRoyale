@@ -10,10 +10,8 @@ public class ScoreManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI tmpCoins;
     [SerializeField] TextMeshProUGUI tmpPosition;
     [SerializeField] float scoreDelay;
-    [SerializeField] int coinMultiplier;
     [SerializeField] int enemiesAlive = 9;
 
-    int coins;
     int score;
 
     public static ScoreManager instance;
@@ -50,9 +48,7 @@ public class ScoreManager : MonoBehaviour
         if (GameManager.instance.IsPlayerAlive) {
             yield return new WaitForSeconds(scoreDelay);
             score++;
-            coins++;
             tmpScore.text = "Score: " + score;
-            tmpCoins.text = "Coins: " + coins;
             if (GameManager.instance.IsPlayerAlive)
 		    {
                 StartCoroutine(IncreaseScore());
@@ -70,8 +66,12 @@ public class ScoreManager : MonoBehaviour
         return score;
 	}
 
-    public int GetCoins()
-	{
-        return coins;
-	}
+    public void PayScore(int valueToPay) {
+        if(valueToPay <= score) {
+            score -= valueToPay;
+        }
+        else {
+            return;
+        }
+    }
 }

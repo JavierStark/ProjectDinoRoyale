@@ -8,7 +8,6 @@ public class GameOverManager : MonoBehaviour
 
     private void Start() {
         Time.timeScale = 0;
-        print("disabled");
     }
 
 

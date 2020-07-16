@@ -73,4 +73,14 @@ public class AIDino : MonoBehaviour
 
         FindObjectOfType<ScoreManager>().EnemyDied();
     }
+
+    public bool IsAlive() {
+        return !dead;
+    }
+
+    public void Attacked(int diceFaces, int difficulty) {
+        if (ThrowDice(diceFaces)>=difficulty) {
+            Death();
+        }
+    }
 }
