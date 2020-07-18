@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -47,13 +48,12 @@ public class ServerManager : MonoBehaviour
 
             try
             {
-                Debug.Log("SM: Éxito recuperando ranking: " + request.downloadHandler.text);
+                Debug.Log("SM: Éxito recuperando ranking: " + JsonHelper.fixJson(request.downloadHandler.text));
                 // TipoUnidad[] lista = JsonHelper.FromJson<TipoUnidad>(jsonColeccion);
                 RankingPosition[] ranking = JsonHelper.FromJson<RankingPosition>(JsonHelper.fixJson(request.downloadHandler.text));
-                
                 foreach (RankingPosition r in ranking)
 				{
-                    Debug.Log("he recuperado: " + r);
+                    Debug.Log("he recuperado: " + r.nickname + " con una puntuación de "+ r.score);
 				}
             }
             catch (System.Exception e)

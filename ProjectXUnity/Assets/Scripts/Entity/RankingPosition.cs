@@ -1,22 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Collections.Specialized;
+﻿using System;
 using UnityEngine;
 
-public class RankingPosition : MonoBehaviour
+[Serializable]
+public class RankingPosition
 {
-    string nickname;
-    string score;
+    public int id;
+    public string nickname;
+    public string score;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
