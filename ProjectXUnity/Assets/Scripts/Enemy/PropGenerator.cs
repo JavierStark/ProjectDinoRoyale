@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Runner.Enemy;
 
-public class EnemyGenerator : Generator
+public class PropGenerator : Generator
 {
 
 }

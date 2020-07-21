@@ -61,7 +61,10 @@ public class PowerUp : MonoBehaviour, IPointerClickHandler
 		else
 		{
             //le ponemos el sombreado o lo q sea
-            gameObject.GetComponent<Image>().color = Color.black;
+            Color disabledColor = Color.white;
+            disabledColor.a = 0.5f;
+            gameObject.GetComponent<Image>().color = disabledColor;
+
             available = false;
 		}
 

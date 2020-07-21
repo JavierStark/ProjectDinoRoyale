@@ -10,7 +10,8 @@ namespace Runner.Core {
 		[SerializeField] DinosScriptableObject dinosScriptableObject;
 		[SerializeField] Canvas gameOverCanvas;
 
-		EnemyGenerator[] generators;
+		EnemyGenerator[] enemiesGenerators;
+		PropGenerator[] propGenerators;
 
 		public static GameManager instance;
 
@@ -22,10 +23,12 @@ namespace Runner.Core {
 
         private void Start() {
             if(IsPlayerAlive){
-				generators = FindObjectsOfType<EnemyGenerator>();
+				enemiesGenerators = FindObjectsOfType<EnemyGenerator>();
+				propGenerators = FindObjectsOfType<PropGenerator>();
 				Time.timeScale = 1;
 				gameOverCanvas.gameObject.SetActive(false);
-				StartCoroutine(Generate());
+				StartCoroutine(GenerateEnemy());
+				StartCoroutine(GenerateProp());
             }
 		}
 
@@ -39,13 +42,22 @@ namespace Runner.Core {
 			}
         }
 
-		private IEnumerator Generate() {
+		private IEnumerator GenerateEnemy() {
+			print("Generate");
 			if (IsPlayerAlive) {
-				int randomGenerator = Random.Range(0, generators.Length);
-				yield return generators[randomGenerator].Spawn();
-				StartCoroutine(Generate());
+				int randomGenerator = Random.Range(0, enemiesGenerators.Length);
+				yield return enemiesGenerators[randomGenerator].Spawn();				
+				StartCoroutine(GenerateEnemy());
 			}			
-        }	
+        }
+		private IEnumerator GenerateProp() {
+			print("Generate");
+			if (IsPlayerAlive) {
+				int randomGenerator = Random.Range(0, propGenerators.Length);
+				yield return propGenerators[randomGenerator].Spawn();
+				StartCoroutine(GenerateProp());
+			}
+		}
 
 		public void GameOver() {
 			gameOverCanvas.gameObject.SetActive(true);
