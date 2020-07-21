@@ -51,6 +51,7 @@ public class ServerManager : MonoBehaviour
                 Debug.Log("SM: Éxito recuperando ranking: " + JsonHelper.fixJson(request.downloadHandler.text));
                 // TipoUnidad[] lista = JsonHelper.FromJson<TipoUnidad>(jsonColeccion);
                 RankingPosition[] ranking = JsonHelper.FromJson<RankingPosition>(JsonHelper.fixJson(request.downloadHandler.text));
+                FindObjectOfType<Ranking>().RankingList = ranking.ToList();
                 foreach (RankingPosition r in ranking)
 				{
                     Debug.Log("he recuperado: " + r.nickname + " con una puntuación de "+ r.score);
