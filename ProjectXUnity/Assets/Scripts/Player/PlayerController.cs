@@ -60,18 +60,18 @@ namespace Runner.Player {
                 colliderCrouch.enabled = false;
             }
         }
-
-        private bool IsGrounded() {
-            //return Physics2D.Raycast(checkerPosition.position, new Vector2(0, -1), 0.01f);
-            return Physics2D.OverlapBox(checkerPosition.position, checkerSize, 0, groundMask); //cpn esto siempre me devolvía false
-        }
-
         private void Jump() {
             PlayJumpSFX();      
 
             playerAnim.SetBool("IsJumping", true);
             playerRB.velocity = new Vector2(0, jumpForce);
         }
+
+        private bool IsGrounded() {
+            //return Physics2D.Raycast(checkerPosition.position, new Vector2(0, -1), 0.01f);
+            return Physics2D.OverlapBox(checkerPosition.position, checkerSize, 0, groundMask); //cpn esto siempre me devolvía false
+        }
+
 
         //Draws the ground checker
         private void OnDrawGizmosSelected() {
@@ -101,9 +101,11 @@ namespace Runner.Player {
         }
 
         public IEnumerator Invincible(int s) {
+            playerAnim.SetBool("IsRainbow", true);
             invincible = true;
             yield return new WaitForSeconds(s);
             invincible = false;
+            playerAnim.SetBool("IsRainbow", false);
         }
 	
 	}

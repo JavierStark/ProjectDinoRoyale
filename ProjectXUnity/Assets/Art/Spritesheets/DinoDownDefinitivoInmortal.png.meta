@@ -1,19 +1,19 @@
 fileFormatVersion: 2
-guid: 0f9e38f3eda74db4c99c3627f3909f97
+guid: fab7404f8d2c64e419ffd5cdbbd06856
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2016850477070279053
-    second: DinoRun_0
+      213: 5427306379770909579
+    second: DinoDownDefinitivoInmortal_0
   - first:
-      213: -5555489541087693379
-    second: DinoRun_1
+      213: 3634946142460296253
+    second: DinoDownDefinitivoInmortal_1
   - first:
-      213: -3927257965947564056
-    second: DinoRun_2
+      213: -8224555323443493936
+    second: DinoDownDefinitivoInmortal_2
   - first:
-      213: 350324430101534762
-    second: DinoRun_3
+      213: -6677423876710894186
+    second: DinoDownDefinitivoInmortal_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -123,85 +123,85 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: DinoRun_0
+      name: DinoDownDefinitivoInmortal_0
       rect:
         serializedVersion: 2
-        x: 3
-        y: 64
-        width: 51
+        x: 9
+        y: 127
+        width: 76
         height: 61
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d81e9dab2da4dfb10800000000000000
-      internalID: 2016850477070279053
+      spriteID: b83d475b56aa15b40800000000000000
+      internalID: 5427306379770909579
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: DinoRun_1
+      name: DinoDownDefinitivoInmortal_1
       rect:
         serializedVersion: 2
-        x: 67
-        y: 64
-        width: 51
+        x: 109
+        y: 127
+        width: 76
         height: 61
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: db5f11652bfe6e2b0800000000000000
-      internalID: -5555489541087693379
+      spriteID: d3cb50ff14ce17230800000000000000
+      internalID: 3634946142460296253
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: DinoRun_2
+      name: DinoDownDefinitivoInmortal_2
       rect:
         serializedVersion: 2
-        x: 3
-        y: 0
-        width: 51
+        x: 9
+        y: 27
+        width: 76
         height: 61
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8ef4f5effa39f79c0800000000000000
-      internalID: -3927257965947564056
+      spriteID: 0d34a9642828cdd80800000000000000
+      internalID: -8224555323443493936
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: DinoRun_3
+      name: DinoDownDefinitivoInmortal_3
       rect:
         serializedVersion: 2
-        x: 67
-        y: 0
-        width: 51
+        x: 109
+        y: 27
+        width: 76
         height: 61
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a28d75c863a9cd400800000000000000
-      internalID: 350324430101534762
+      spriteID: 6957fe5dc560553a0800000000000000
+      internalID: -6677423876710894186
       vertices: []
       indices: 
       edges: []

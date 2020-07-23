@@ -61,6 +61,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tmpScore: {fileID: 0}
+  tmpCoins: {fileID: 0}
   tmpPosition: {fileID: 0}
-  scoreMultiplier: 0
+  scoreDelay: 1
   enemiesAlive: 9

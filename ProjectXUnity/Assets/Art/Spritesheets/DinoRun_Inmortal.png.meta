@@ -1,19 +1,19 @@
 fileFormatVersion: 2
-guid: 0f9e38f3eda74db4c99c3627f3909f97
+guid: ccb9f26f64bf60945ac636655790c2c9
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2016850477070279053
-    second: DinoRun_0
+      213: 1889468056575903442
+    second: DinoRun_Inmortal_0
   - first:
-      213: -5555489541087693379
-    second: DinoRun_1
+      213: 2369041593050128128
+    second: DinoRun_Inmortal_1
   - first:
-      213: -3927257965947564056
-    second: DinoRun_2
+      213: -3548036698125790094
+    second: DinoRun_Inmortal_2
   - first:
-      213: 350324430101534762
-    second: DinoRun_3
+      213: -754181158722489954
+    second: DinoRun_Inmortal_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -57,7 +57,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 30
+  spritePixelsToUnits: 300
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -123,13 +123,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: DinoRun_0
+      name: DinoRun_Inmortal_0
       rect:
         serializedVersion: 2
-        x: 3
-        y: 64
-        width: 51
-        height: 61
+        x: 30
+        y: 640
+        width: 510
+        height: 610
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,20 +137,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d81e9dab2da4dfb10800000000000000
-      internalID: 2016850477070279053
+      spriteID: 2d687a6cf2db83a10800000000000000
+      internalID: 1889468056575903442
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: DinoRun_1
+      name: DinoRun_Inmortal_1
       rect:
         serializedVersion: 2
-        x: 67
-        y: 64
-        width: 51
-        height: 61
+        x: 670
+        y: 640
+        width: 510
+        height: 610
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -158,20 +158,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: db5f11652bfe6e2b0800000000000000
-      internalID: -5555489541087693379
+      spriteID: 00fd0e3f6c680e020800000000000000
+      internalID: 2369041593050128128
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: DinoRun_2
+      name: DinoRun_Inmortal_2
       rect:
         serializedVersion: 2
-        x: 3
+        x: 30
         y: 0
-        width: 51
-        height: 61
+        width: 510
+        height: 610
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -179,20 +179,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8ef4f5effa39f79c0800000000000000
-      internalID: -3927257965947564056
+      spriteID: 274992edb67d2cec0800000000000000
+      internalID: -3548036698125790094
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: DinoRun_3
+      name: DinoRun_Inmortal_3
       rect:
         serializedVersion: 2
-        x: 67
+        x: 670
         y: 0
-        width: 51
-        height: 61
+        width: 510
+        height: 610
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -200,8 +200,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a28d75c863a9cd400800000000000000
-      internalID: 350324430101534762
+      spriteID: e91bd026b3c9885f0800000000000000
+      internalID: -754181158722489954
       vertices: []
       indices: 
       edges: []
