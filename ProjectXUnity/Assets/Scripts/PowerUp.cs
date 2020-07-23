@@ -80,6 +80,7 @@ public class PowerUp : MonoBehaviour, IPointerClickHandler
                 used = true;
                 dinosArray[i].Attacked(diceFaces, difficultyToHit);
                 print(dinosArray[i].name + " attacked");
+                return;
             }
             if (used) {
                 return;

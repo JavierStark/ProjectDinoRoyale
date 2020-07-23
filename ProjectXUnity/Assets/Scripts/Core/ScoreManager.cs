@@ -48,7 +48,7 @@ public class ScoreManager : MonoBehaviour
         if (GameManager.instance.IsPlayerAlive) {
             yield return new WaitForSeconds(scoreDelay);
             score++;
-            tmpScore.text = "Score: " + score;
+            tmpScore.text = score.ToString();
             if (GameManager.instance.IsPlayerAlive)
 		    {
                 StartCoroutine(IncreaseScore());
