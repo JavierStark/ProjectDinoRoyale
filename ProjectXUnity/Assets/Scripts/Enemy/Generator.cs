@@ -4,7 +4,8 @@ using UnityEngine;
 namespace Runner.Enemy {
     public class Generator : MonoBehaviour {
 
-        [SerializeField] GameObject enemyToSpawn;
+        [SerializeField] GameObject[] enemyToSpawn;
+ 
         [SerializeField] Transform enemyParent;
 
         [SerializeField] float minTimeBetweenSpawns;
@@ -19,7 +20,7 @@ namespace Runner.Enemy {
         }
 
         protected void SpawnEnemy() {
-            Instantiate(enemyToSpawn, transform.position, Quaternion.identity, enemyParent);
+            Instantiate(enemyToSpawn[Random.Range(0, enemyToSpawn.Length)], transform.position, Quaternion.identity, enemyParent);
         }
     }
 
