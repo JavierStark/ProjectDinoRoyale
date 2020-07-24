@@ -1413,6 +1413,12 @@ PrefabInstance:
       propertyPath: maxTimeBetweenSpawns
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 4669301589275767890, guid: 9a0da87bf3e46c04da4ce09d7e6ecf8c,
+        type: 3}
+      propertyPath: enemyToSpawn.Array.data[0]
+      value: 
+      objectReference: {fileID: 4435758856597968673, guid: f6d0924b9452e314ca3f73fcad291c1e,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9a0da87bf3e46c04da4ce09d7e6ecf8c, type: 3}
 --- !u!1 &1464146948
@@ -1867,6 +1873,12 @@ PrefabInstance:
       propertyPath: maxTimeBetweenSpawns
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 4669301589275767890, guid: 9a0da87bf3e46c04da4ce09d7e6ecf8c,
+        type: 3}
+      propertyPath: enemyToSpawn.Array.data[0]
+      value: 
+      objectReference: {fileID: 6738556781991989310, guid: 83d831b085429824cabaf52de67e686b,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9a0da87bf3e46c04da4ce09d7e6ecf8c, type: 3}
 --- !u!1001 &1810337009
@@ -3082,6 +3094,12 @@ PrefabInstance:
       propertyPath: maxTimeBetweenSpawns
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 3488919523869759540, guid: 4ec9c04b539519b41b1c03f5e8720576,
+        type: 3}
+      propertyPath: enemyToSpawn.Array.data[0]
+      value: 
+      objectReference: {fileID: 2725050691268613316, guid: 63b4cdefa07502b4aaf59b5d03df912e,
+        type: 3}
     - target: {fileID: 3644638016314984540, guid: 4ec9c04b539519b41b1c03f5e8720576,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3157,6 +3175,12 @@ PrefabInstance:
       propertyPath: maxTimeBetweenSpawns
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 4244821498932648239, guid: 4ec9c04b539519b41b1c03f5e8720576,
+        type: 3}
+      propertyPath: enemyToSpawn.Array.data[0]
+      value: 
+      objectReference: {fileID: 8531778146550727100, guid: 0ef60548df076d84cb9a2213ea81262d,
+        type: 3}
     - target: {fileID: 7133974011713360402, guid: 4ec9c04b539519b41b1c03f5e8720576,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3345,7 +3369,7 @@ PrefabInstance:
     - target: {fileID: 6409479522768020311, guid: a1400f7a83517e743846780c3b6defe0,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -10.7
+      value: -13.77
       objectReference: {fileID: 0}
     - target: {fileID: 6409479522768020311, guid: a1400f7a83517e743846780c3b6defe0,
         type: 3}

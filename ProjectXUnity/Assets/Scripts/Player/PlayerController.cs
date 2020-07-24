@@ -36,7 +36,9 @@ namespace Runner.Player {
 
         private void Update() {
             jump = Input.GetAxis("Jump");
+            print(Input.GetAxis("Jump"));
             vertical = Input.GetAxisRaw("Vertical");
+            print(Input.GetAxis("Vertical"));
 
             if (IsGrounded()) {
                 playerAnim.SetBool("IsJumping", false);
