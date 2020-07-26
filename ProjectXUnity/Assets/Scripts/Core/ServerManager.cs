@@ -28,10 +28,10 @@ public class ServerManager : MonoBehaviour
 
 	public void GetRanking()
 	{
-        StartCoroutine(CallRanking());
+        StartCoroutine(RankingCall());
 	}
 
-    IEnumerator CallRanking()
+    IEnumerator RankingCall()
 	{
         Debug.Log("SM: llamando al ranking");
         string finalUri = "ranking.php";
@@ -41,7 +41,7 @@ public class ServerManager : MonoBehaviour
         if (request.isNetworkError)
         {
             Debug.Log("SM Error llamando al ranking: " + request.error);
-            CallRanking();
+            RankingCall();
         }
         else
         {
@@ -62,6 +62,51 @@ public class ServerManager : MonoBehaviour
                 Debug.Log("SM: ERROR recuperando ranking: " + e);
             }
 
+        }
+    }
+    public void SignUser(WWWForm formu)
+	{
+        StartCoroutine(SignUserCall(formu));
+	}
+    IEnumerator SignUserCall(WWWForm formu)
+	{
+		SignLoginManager signLoginManager = FindObjectOfType<SignLoginManager>();
+		Debug.Log("SM: registrando usuario");
+        string finalUri = "nuser.php";
+        UnityWebRequest request = UnityWebRequest.Post(serverUri + finalUri, formu);
+        yield return request.SendWebRequest();
+
+        if (request.isNetworkError)
+        {
+            Debug.Log("SM Error intentando registrar usuario: " + request.error);
+            SignUserCall(formu);
+        }
+        else
+        {
+
+            try
+            {
+                Debug.Log("jumanjiii");
+                string response = request.downloadHandler.text;
+
+                try
+				{
+                    User newUser = JsonUtility.FromJson<User>(response);
+                    signLoginManager.txtInfo.text = "USUARIO REGISTRADO CON ÉXITO";
+                    //tenemos q llevar al tio al menú de login (o directamente meterlo en el juego, lo q veamos)
+                    Debug.Log("exito registrando");
+				}
+				catch (System.Exception e)
+				{
+                    signLoginManager.txtInfo.text = "ALGO HA IDO MAL CON EL REGISTRO";
+                    Debug.Log("SM: Error registrando usuario -> " + e);
+				}
+                
+            }
+            catch (System.Exception e)
+            {
+                Debug.Log("SM: ERROR registrando usuario: " + e);
+            }
         }
     }
 
