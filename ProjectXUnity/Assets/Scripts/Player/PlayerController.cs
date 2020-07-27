@@ -35,8 +35,8 @@ namespace Runner.Player {
         }
 
         private void Update() {
-            jump = Input.GetAxis("Jump");
-            vertical = Input.GetAxisRaw("Vertical");
+            jump = SimpleInput.GetAxis("Jump");
+            vertical = SimpleInput.GetAxisRaw("Vertical");
 
 
             if (IsGrounded()) {
