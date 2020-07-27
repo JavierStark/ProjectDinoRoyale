@@ -92,13 +92,13 @@ public class ServerManager : MonoBehaviour
                 try
 				{
                     User newUser = JsonUtility.FromJson<User>(response);
-                    signLoginManager.txtInfo.text = "USUARIO REGISTRADO CON ÉXITO";
+                    signLoginManager.txtInfoSign.text = "USUARIO REGISTRADO CON ÉXITO";
                     //tenemos q llevar al tio al menú de login (o directamente meterlo en el juego, lo q veamos)
                     Debug.Log("exito registrando");
 				}
 				catch (System.Exception e)
 				{
-                    signLoginManager.txtInfo.text = "ALGO HA IDO MAL CON EL REGISTRO";
+                    signLoginManager.txtInfoSign.text = "ALGO HA IDO MAL CON EL REGISTRO";
                     Debug.Log("SM: Error registrando usuario -> " + e);
 				}
                 
@@ -106,6 +106,52 @@ public class ServerManager : MonoBehaviour
             catch (System.Exception e)
             {
                 Debug.Log("SM: ERROR registrando usuario: " + e);
+            }
+        }
+    }
+
+    public void LoginUser(WWWForm formu)
+	{
+        StartCoroutine(LoginCall(formu));
+	}
+    IEnumerator LoginCall(WWWForm formu)
+	{
+        SignLoginManager signLoginManager = FindObjectOfType<SignLoginManager>();
+        Debug.Log("SM: Login usuario");
+        string finalUri = "login.php";
+        UnityWebRequest request = UnityWebRequest.Post(serverUri + finalUri, formu);
+        yield return request.SendWebRequest();
+        if (request.isNetworkError)
+        {
+            Debug.Log("SM Error intentando registrar usuario: " + request.error);
+            LoginCall(formu);
+        }
+        else
+        {
+
+            try
+            {
+                Debug.Log("LOGEANDOOOO");
+                string response = request.downloadHandler.text;
+
+                try
+                {
+                    Debug.Log("la respuesta: " + response);
+                    User newUser = JsonUtility.FromJson<User>(response);
+                    signLoginManager.txtInfoLogin.text = "¡BIENVENIDO!";
+                    //TENEMOS Q METER AL TIO EN EL JUEGO
+                    Debug.Log("se ha logeado: "+ newUser.nickname);
+                }
+                catch (System.Exception e)
+                {
+                    signLoginManager.txtInfoLogin.text = "USUARIO O PASSWORD INCORRECTO";
+                    Debug.Log("SM: Error logeando -> " + e);
+                }
+
+            }
+            catch (System.Exception e)
+            {
+                Debug.Log("SM: ERROR logeando: " + e);
             }
         }
     }

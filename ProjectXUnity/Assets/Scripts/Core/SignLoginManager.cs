@@ -7,7 +7,7 @@ using System.Linq;
 public class SignLoginManager : MonoBehaviour
 {
     GameObject panelLogin, panelSign;
-    public TMP_Text txtInfo;
+    public TMP_Text txtInfoSign, txtInfoLogin;
 
     bool error = false;
 
@@ -23,17 +23,15 @@ public class SignLoginManager : MonoBehaviour
     {
        panelLogin = GameObject.Find("PanelLogin");
        panelSign = GameObject.Find("PanelSign");
-       txtInfo = GameObject.Find("TxtInfo").GetComponent<TMP_Text>();
+       txtInfoSign = panelSign.GetComponentsInChildren<TMP_Text>().Where(d => d.gameObject.name == "TxtInfo").First();
+       txtInfoLogin = panelLogin.GetComponentsInChildren<TMP_Text>().Where(d => d.gameObject.name == "TxtInfo").First();
     }
 
     public void CheckCredentials()
 	{
         error = false;
-        //string nickname = null;
-        //string pass = null;
         string confirmPass = null;
         TMP_InputField[] inputs = panelSign.GetComponentsInChildren<TMP_InputField>();
-        //txtInfo = GameObject.Find("TxtInfo").GetComponent<TMP_Text>();
         foreach (TMP_InputField i in inputs)
         {
             if (i.name == "InputPassword")
@@ -50,28 +48,28 @@ public class SignLoginManager : MonoBehaviour
 			}
         }
 
-        if (nickname == String.Empty || nickname.Trim() == String.Empty)
+        if (nickname == string.Empty || nickname.Trim() == string.Empty)
 		{
             error = true;
-            txtInfo.text = emptyNicknameMessage.ToUpper();
+            txtInfoSign.text = emptyNicknameMessage.ToUpper();
 		}
-        else if (pass != String.Empty)
+        else if (pass != string.Empty)
         {
             if (pass != confirmPass)
             {
                 error = true;
-                txtInfo.text = failConfirmMessage.ToUpper();
+                txtInfoSign.text = failConfirmMessage.ToUpper();
             }
           
 		}
-		else if (pass == String.Empty)
+		else if (pass == string.Empty)
 		{
             error = true;
-            txtInfo.text = emptyPasswordMessage.ToUpper();
+            txtInfoSign.text = emptyPasswordMessage.ToUpper();
 		}
 
 		if (error == false) {
-            txtInfo.text = correctFormMessage.ToUpper();
+            txtInfoSign.text = correctFormMessage.ToUpper();
         }
     }
 
@@ -89,6 +87,28 @@ public class SignLoginManager : MonoBehaviour
 		{
             Debug.Log("hay algun error en el formulario y no estoy llamando");
 		}
+    }
+
+    public void Login()
+	{
+        TMP_InputField[] inputs = panelLogin.GetComponentsInChildren<TMP_InputField>();
+        foreach (TMP_InputField i in inputs)
+        {
+            if (i.name == "InputPassword")
+            {
+                pass = i.text;
+
+            }
+            else if (i.name == "InputNickname")
+            {
+                nickname = i.text;
+            }
+        }
+
+        WWWForm formu = new WWWForm();
+        formu.AddField("nickname", nickname);
+        formu.AddField("password", pass);
+        ServerManager.instance.LoginUser(formu);
     }
 
    

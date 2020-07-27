@@ -3,7 +3,7 @@
 [Serializable]
 public class User 
 {
-	string nickname;
+	public string nickname;
 	string puntuacion;
 
 }
