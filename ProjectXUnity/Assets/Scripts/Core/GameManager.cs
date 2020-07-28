@@ -6,6 +6,8 @@ using Runner.Enemy;
 namespace Runner.Core {
     public class GameManager : MonoBehaviour {
 
+		[SerializeField] private float globalMultiplier;
+
 		[SerializeField] bool isPlayerAlive = true;
 		[SerializeField] DinosScriptableObject dinosScriptableObject;
 		[SerializeField] Canvas gameOverCanvas;
@@ -21,6 +23,7 @@ namespace Runner.Core {
 		}
 
         private void Start() {
+			globalMultiplier = 1.2f;
             if(IsPlayerAlive){
 				enemiesGenerators = FindObjectsOfType<EnemyGenerator>();
 				Time.timeScale = 1;
@@ -51,6 +54,10 @@ namespace Runner.Core {
 		public void GameOver() {
 			gameOverCanvas.gameObject.SetActive(true);
 		}
+
+		public float GlobalMultiplier() {
+			return globalMultiplier;
+        }
 
 		//private void Update() {
 

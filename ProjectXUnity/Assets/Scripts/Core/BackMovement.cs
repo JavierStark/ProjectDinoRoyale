@@ -11,13 +11,9 @@ namespace Runner.Core {
             material = GetComponent<Renderer>().material;
         }
 
-        private void Start() {
-            
-        }
-
         private void Update() {
             offset = new Vector2(velocity, 0);
-            material.mainTextureOffset += offset*Time.deltaTime;            
+            material.mainTextureOffset += offset*Time.deltaTime*GameManager.instance.GlobalMultiplier();            
         }
 
     }
