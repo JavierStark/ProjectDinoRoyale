@@ -87,7 +87,7 @@ public class SignLoginManager : MonoBehaviour
 		{
             Debug.Log("hay algun error en el formulario y no estoy llamando");
 		}
-        ToLogIn();
+        
     }
 
     public void Login()
@@ -114,10 +114,6 @@ public class SignLoginManager : MonoBehaviour
 
     public void ToSignIn() {
         GetComponent<Animator>().SetTrigger("SwapToSignIn");
-    }
-
-    public void ToLogIn() {
-        GetComponent<Animator>().SetTrigger("SwapToLogIn");
     }
    
 }

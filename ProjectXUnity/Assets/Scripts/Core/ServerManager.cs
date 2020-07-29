@@ -100,12 +100,22 @@ public class ServerManager : MonoBehaviour
 
                 try
 				{
-                    User newUser = JsonUtility.FromJson<User>(response);
-                    signLoginManager.txtInfoSign.text = "USUARIO REGISTRADO CON ÉXITO";
-                    Debug.Log("SM: exito registrando usuario");
-                    sceneFlow.ChangeScene("Login");
-                  
+                    Debug.Log(request.downloadHandler.text);
+                    if (request.downloadHandler.text.Contains("Error nick"))
+					{
+                        signLoginManager.txtInfoSign.text = "ESE NICKNAME YA EXISTE";
 
+					}
+					else
+					{
+                        User newUser = JsonUtility.FromJson<User>(response);
+                        signLoginManager.txtInfoSign.text = "USUARIO REGISTRADO CON ÉXITO";
+                        Debug.Log("SM: exito registrando usuario");
+                        ToLogIn();
+                    }
+					
+                    
+                    //sceneFlow.ChangeScene("Login");
                    
 				}
 				catch (System.Exception e)
@@ -190,6 +200,9 @@ public class ServerManager : MonoBehaviour
         yield return request.SendWebRequest();
 
 	}
-
+    public void ToLogIn()
+    {
+        FindObjectOfType<SignLoginManager>().gameObject.GetComponent<Animator>().SetTrigger("SwapToLogIn");
+    }
 
 }
