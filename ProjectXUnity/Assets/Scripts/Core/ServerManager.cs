@@ -1,9 +1,11 @@
 ﻿using Runner.Core;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class ServerManager : MonoBehaviour
 {
@@ -169,11 +171,15 @@ public class ServerManager : MonoBehaviour
 
     public void NewScore()
 	{
-       
+        int puntPos = 10 - Int32.Parse(ScoreManager.instance.tmpPosition.text);
+        Debug.Log("10 - posicion: "+ puntPos);
+        Debug.Log("multiplicado por BONUS "+ ScoreManager.instance.bonus + " = " + puntPos * ScoreManager.instance.bonus);
+        int finalScore = ((10 - Int32.Parse(ScoreManager.instance.tmpPosition.text)) * ScoreManager.instance.bonus) + ScoreManager.instance.GetScore();
+
         WWWForm formu = new WWWForm();
         formu.AddField("nickname", user.nickname);
-        formu.AddField("score", ScoreManager.instance.GetScore());
-        Debug.Log("SM: intentando salvar " + ScoreManager.instance.GetScore() +" puntos, para: " + user.nickname);
+        formu.AddField("score", finalScore);
+        Debug.Log("SM: intentando salvar " + finalScore +" puntos, para: " + user.nickname);
         StartCoroutine(NewScoreCall(formu));
 	}
 

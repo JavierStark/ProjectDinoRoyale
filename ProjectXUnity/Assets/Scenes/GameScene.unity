@@ -3654,6 +3654,10 @@ PrefabInstance:
       propertyPath: tmpPosition
       value: 
       objectReference: {fileID: 1010086131}
+    - target: {fileID: 427807319, guid: f0cda6ecdc0d3e644b2d6efe207cbb00, type: 3}
+      propertyPath: bonus
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6254282909088455956, guid: f0cda6ecdc0d3e644b2d6efe207cbb00,
         type: 3}
       propertyPath: m_LocalPosition.x
