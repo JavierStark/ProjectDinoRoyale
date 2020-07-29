@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Login.unity
+    path: Assets/Scenes/LoginScene.unity
     guid: e2e396627299a4c4090ba62db1f37f48
   - enabled: 1
     path: Assets/Scenes/OptionsScene.unity
@@ -17,6 +17,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GameScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/RankingScene.unity
+    guid: 8b3b372a180085d4aa794c65cbb7b0df
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 497a4750d1f1e5747970392738244bab,
       type: 2}
