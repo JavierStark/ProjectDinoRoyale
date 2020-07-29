@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Runner.Core;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -12,6 +13,8 @@ public class ServerManager : MonoBehaviour
 
     //no estoy seguro si necesitamos que esta clase sea singleton....
     public static ServerManager instance;
+    SceneFlow sceneFlow;
+    [SerializeField] public User user;
 	private void Awake()
 	{
 		if (instance == null)
@@ -23,6 +26,12 @@ public class ServerManager : MonoBehaviour
 			Destroy(gameObject);
 		}
 		DontDestroyOnLoad(this);
+
+        sceneFlow = FindObjectOfType<SceneFlow>();
+        if(sceneFlow == null)
+		{
+            sceneFlow = gameObject.AddComponent<SceneFlow>();
+		}
 
 	}
 
@@ -49,7 +58,6 @@ public class ServerManager : MonoBehaviour
             try
             {
                 Debug.Log("SM: Éxito recuperando ranking: " + JsonHelper.fixJson(request.downloadHandler.text));
-                // TipoUnidad[] lista = JsonHelper.FromJson<TipoUnidad>(jsonColeccion);
                 RankingPosition[] ranking = JsonHelper.FromJson<RankingPosition>(JsonHelper.fixJson(request.downloadHandler.text));
                 FindObjectOfType<Ranking>().RankingList = ranking.ToList();
                 foreach (RankingPosition r in ranking)
@@ -86,15 +94,17 @@ public class ServerManager : MonoBehaviour
 
             try
             {
-                Debug.Log("jumanjiii");
                 string response = request.downloadHandler.text;
 
                 try
 				{
                     User newUser = JsonUtility.FromJson<User>(response);
                     signLoginManager.txtInfoSign.text = "USUARIO REGISTRADO CON ÉXITO";
-                    //tenemos q llevar al tio al menú de login (o directamente meterlo en el juego, lo q veamos)
-                    Debug.Log("exito registrando");
+                    Debug.Log("SM: exito registrando usuario");
+                    sceneFlow.ChangeScene("Login");
+                  
+
+                   
 				}
 				catch (System.Exception e)
 				{
@@ -123,7 +133,7 @@ public class ServerManager : MonoBehaviour
         yield return request.SendWebRequest();
         if (request.isNetworkError)
         {
-            Debug.Log("SM Error intentando registrar usuario: " + request.error);
+            Debug.Log("SM: Error intentando logear usuario: " + request.error);
             LoginCall(formu);
         }
         else
@@ -131,16 +141,17 @@ public class ServerManager : MonoBehaviour
 
             try
             {
-                Debug.Log("LOGEANDOOOO");
                 string response = request.downloadHandler.text;
 
                 try
                 {
                     Debug.Log("la respuesta: " + response);
                     User newUser = JsonUtility.FromJson<User>(response);
+                    user = newUser;
                     signLoginManager.txtInfoLogin.text = "¡BIENVENIDO!";
-                    //TENEMOS Q METER AL TIO EN EL JUEGO
                     Debug.Log("se ha logeado: "+ newUser.nickname);
+
+                    sceneFlow.ChangeScene("MainMenuScene");
                 }
                 catch (System.Exception e)
                 {
@@ -155,6 +166,24 @@ public class ServerManager : MonoBehaviour
             }
         }
     }
+
+    public void NewScore()
+	{
+       
+        WWWForm formu = new WWWForm();
+        formu.AddField("nickname", user.nickname);
+        formu.AddField("score", ScoreManager.instance.GetScore());
+        Debug.Log("SM: intentando salvar " + ScoreManager.instance.GetScore() +" puntos, para: " + user.nickname);
+        StartCoroutine(NewScoreCall(formu));
+	}
+
+    IEnumerator NewScoreCall(WWWForm formu)
+	{
+        string finalUri = "nuser.php";
+        UnityWebRequest request = UnityWebRequest.Post(serverUri + finalUri, formu);
+        yield return request.SendWebRequest();
+
+	}
 
 
 }
