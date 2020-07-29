@@ -8,9 +8,10 @@ public class ScoreManager : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI tmpScore;
     [SerializeField] TextMeshProUGUI tmpCoins;
-    [SerializeField] TextMeshProUGUI tmpPosition;
+    [SerializeField] public TextMeshProUGUI tmpPosition;
     [SerializeField] float scoreDelay;
     [SerializeField] int enemiesAlive = 9;
+    public int bonus = 2;
 
     int score;
 

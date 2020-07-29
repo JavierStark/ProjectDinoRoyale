@@ -1152,6 +1152,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   serverUri: https://dinoroyale.000webhostapp.com/
+  user:
+    nickname: 
 --- !u!4 &429277097
 Transform:
   m_ObjectHideFlags: 0

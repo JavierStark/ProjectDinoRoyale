@@ -52,7 +52,9 @@ namespace Runner.Core {
 
 
 		public void GameOver() {
+			ServerManager.instance.NewScore();
 			gameOverCanvas.gameObject.SetActive(true);
+			
 		}
 
 		public float GlobalMultiplier() {
