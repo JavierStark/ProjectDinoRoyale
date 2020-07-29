@@ -323,7 +323,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1519542579}
     - target: {fileID: 2372365200240382483, guid: b83a94d86c900bd47bad5b0dc9e70e95,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
@@ -368,7 +368,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1519542579}
     - target: {fileID: 2372365201687570235, guid: b83a94d86c900bd47bad5b0dc9e70e95,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
@@ -1655,6 +1655,87 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1552057373}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1519542578
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4498054825142711985, guid: 8394be4686d185b4ebc597f9ab2b4a38,
+        type: 3}
+      propertyPath: m_Name
+      value: SceneManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 4911371403456066667, guid: 8394be4686d185b4ebc597f9ab2b4a38,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.20358276
+      objectReference: {fileID: 0}
+    - target: {fileID: 4911371403456066667, guid: 8394be4686d185b4ebc597f9ab2b4a38,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.9335022
+      objectReference: {fileID: 0}
+    - target: {fileID: 4911371403456066667, guid: 8394be4686d185b4ebc597f9ab2b4a38,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2.2226562
+      objectReference: {fileID: 0}
+    - target: {fileID: 4911371403456066667, guid: 8394be4686d185b4ebc597f9ab2b4a38,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4911371403456066667, guid: 8394be4686d185b4ebc597f9ab2b4a38,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4911371403456066667, guid: 8394be4686d185b4ebc597f9ab2b4a38,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4911371403456066667, guid: 8394be4686d185b4ebc597f9ab2b4a38,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4911371403456066667, guid: 8394be4686d185b4ebc597f9ab2b4a38,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 4911371403456066667, guid: 8394be4686d185b4ebc597f9ab2b4a38,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4911371403456066667, guid: 8394be4686d185b4ebc597f9ab2b4a38,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4911371403456066667, guid: 8394be4686d185b4ebc597f9ab2b4a38,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8394be4686d185b4ebc597f9ab2b4a38, type: 3}
+--- !u!114 &1519542579 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5429862919719657770, guid: 8394be4686d185b4ebc597f9ab2b4a38,
+    type: 3}
+  m_PrefabInstance: {fileID: 1519542578}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12031a4ad93dd4f42984ba84c467222d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1552057373
 PrefabInstance:
   m_ObjectHideFlags: 0
