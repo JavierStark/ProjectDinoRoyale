@@ -100,27 +100,28 @@ public class ServerManager : MonoBehaviour
 
                 try
 				{
+                    SignLoginManager slm = FindObjectOfType<SignLoginManager>();
                     Debug.Log(request.downloadHandler.text);
                     if (request.downloadHandler.text.Contains("Error nick"))
 					{
                         signLoginManager.txtInfoSign.text = "ESE NICKNAME YA EXISTE";
-
+                        slm.ResetPasswordInputs();
 					}
 					else
 					{
                         User newUser = JsonUtility.FromJson<User>(response);
                         signLoginManager.txtInfoSign.text = "USUARIO REGISTRADO CON ÉXITO";
                         Debug.Log("SM: exito registrando usuario");
-                        ToLogIn();
+                       
+                        slm.ToLogIn();
+                        slm.ResetInputs();
+                        
                     }
 					
-                    
-                    //sceneFlow.ChangeScene("Login");
-                   
 				}
 				catch (System.Exception e)
 				{
-                    signLoginManager.txtInfoSign.text = "ALGO HA IDO MAL CON EL REGISTRO";
+                    signLoginManager.txtInfoSign.text = "NUESTROS SERVIDORES NO FUNCIONAN \nINTÉNTALO MÁS TARDE";
                     Debug.Log("SM: Error registrando usuario -> " + e);
 				}
                 
@@ -200,9 +201,9 @@ public class ServerManager : MonoBehaviour
         yield return request.SendWebRequest();
 
 	}
-    public void ToLogIn()
-    {
-        FindObjectOfType<SignLoginManager>().gameObject.GetComponent<Animator>().SetTrigger("SwapToLogIn");
-    }
+    //public void ToLogIn()
+    //{
+    //    FindObjectOfType<SignLoginManager>().gameObject.GetComponent<Animator>().SetTrigger("SwapToLogIn");
+    //}
 
 }

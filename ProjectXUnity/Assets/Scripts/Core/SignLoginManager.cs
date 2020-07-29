@@ -115,5 +115,29 @@ public class SignLoginManager : MonoBehaviour
     public void ToSignIn() {
         GetComponent<Animator>().SetTrigger("SwapToSignIn");
     }
-   
+
+    public void ToLogIn()
+    {
+        GetComponent<Animator>().SetTrigger("SwapToLogIn");
+    }
+
+    public void ResetInputs()
+	{
+        foreach (TMP_InputField inputs in panelSign.GetComponentsInChildren<TMP_InputField>())
+		{
+            inputs.text = "";
+		}
+    }
+    public void ResetPasswordInputs()
+	{
+        foreach (TMP_InputField inputs in panelSign.GetComponentsInChildren<TMP_InputField>())
+        {
+            if (inputs.name != "InputNickname")
+			{
+                inputs.text = "";
+            }
+        }
+    }
+
+
 }
