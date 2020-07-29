@@ -23,7 +23,7 @@ namespace Runner.Core {
 		}
 
         private void Start() {
-			globalMultiplier = 1.2f;
+			globalMultiplier = 1f;
             if(IsPlayerAlive){
 				enemiesGenerators = FindObjectsOfType<EnemyGenerator>();
 				Time.timeScale = 1;

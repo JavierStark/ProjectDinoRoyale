@@ -339,10 +339,20 @@ PrefabInstance:
       propertyPath: m_Interactable
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2372365200240382484, guid: b83a94d86c900bd47bad5b0dc9e70e95,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -113
+      objectReference: {fileID: 0}
+    - target: {fileID: 2372365200240382484, guid: b83a94d86c900bd47bad5b0dc9e70e95,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2372365200697658936, guid: b83a94d86c900bd47bad5b0dc9e70e95,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2372365200697658937, guid: b83a94d86c900bd47bad5b0dc9e70e95,
         type: 3}
@@ -373,6 +383,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
       value: MainMenuScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 2372365201687570236, guid: b83a94d86c900bd47bad5b0dc9e70e95,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -336
       objectReference: {fileID: 0}
     - target: {fileID: 2372365202044148833, guid: b83a94d86c900bd47bad5b0dc9e70e95,
         type: 3}
