@@ -17,6 +17,8 @@ public class ServerManager : MonoBehaviour
     public static ServerManager instance;
     SceneFlow sceneFlow;
     [SerializeField] public User user;
+
+    List<string> nicknames = new List<string>();
 	private void Awake()
 	{
 		if (instance == null)
@@ -28,6 +30,8 @@ public class ServerManager : MonoBehaviour
 			Destroy(gameObject);
 		}
 		DontDestroyOnLoad(this);
+
+        
 
         sceneFlow = FindObjectOfType<SceneFlow>();
         if(sceneFlow == null)
@@ -100,17 +104,28 @@ public class ServerManager : MonoBehaviour
 
                 try
 				{
-                    User newUser = JsonUtility.FromJson<User>(response);
-                    signLoginManager.txtInfoSign.text = "USUARIO REGISTRADO CON ÉXITO";
-                    Debug.Log("SM: exito registrando usuario");
-                    sceneFlow.ChangeScene("Login");
-                  
-
-                   
+                    SignLoginManager slm = FindObjectOfType<SignLoginManager>();
+                    Debug.Log(request.downloadHandler.text);
+                    if (request.downloadHandler.text.Contains("Error nick"))
+					{
+                        signLoginManager.txtInfoSign.text = "ESE NICKNAME YA EXISTE";
+                        slm.ResetPasswordInputs();
+					}
+					else
+					{
+                        User newUser = JsonUtility.FromJson<User>(response);
+                        signLoginManager.txtInfoSign.text = "USUARIO REGISTRADO CON ÉXITO";
+                        Debug.Log("SM: exito registrando usuario");
+                       
+                        slm.ToLogIn();
+                        slm.ResetInputs();
+                        
+                    }
+					
 				}
 				catch (System.Exception e)
 				{
-                    signLoginManager.txtInfoSign.text = "ALGO HA IDO MAL CON EL REGISTRO";
+                    signLoginManager.txtInfoSign.text = "NUESTROS SERVIDORES NO FUNCIONAN \nINTÉNTALO MÁS TARDE";
                     Debug.Log("SM: Error registrando usuario -> " + e);
 				}
                 
@@ -125,6 +140,7 @@ public class ServerManager : MonoBehaviour
     public void LoginUser(WWWForm formu)
 	{
         StartCoroutine(LoginCall(formu));
+
 	}
     IEnumerator LoginCall(WWWForm formu)
 	{
@@ -166,6 +182,10 @@ public class ServerManager : MonoBehaviour
             {
                 Debug.Log("SM: ERROR logeando: " + e);
             }
+			finally
+			{
+                StartCoroutine(GetNicknamesCall());
+            }
         }
     }
 
@@ -191,5 +211,26 @@ public class ServerManager : MonoBehaviour
 
 	}
 
+    public List<string> GetNicknames()
+	{
+        return nicknames;
+	}
+
+    IEnumerator GetNicknamesCall()
+	{
+        Debug.Log("SM: recuperando nicknames de la BD");
+        string finalUri = "nicknames.php";
+        UnityWebRequest request = UnityWebRequest.Get(serverUri + finalUri);
+        yield return request.SendWebRequest();
+        User[] users = JsonHelper.FromJson<User>(JsonHelper.fixJson(request.downloadHandler.text));
+        foreach (User u in users)
+		{
+            if (u.nickname != user.nickname)
+			{
+                nicknames.Add(u.nickname);
+            }
+           
+		}
+    }
 
 }
