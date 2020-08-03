@@ -36,7 +36,7 @@ public class ServerManager : MonoBehaviour
 		{
             sceneFlow = gameObject.AddComponent<SceneFlow>();
 		}
-
+        StartCoroutine(GetNicknamesCall());
         RecoverPlayerPrefs();
 	}
 
@@ -141,22 +141,10 @@ public class ServerManager : MonoBehaviour
         WWWForm formu = new WWWForm();
         formu.AddField("nickname", nickname);
         formu.AddField("password", pass);
-        StartCoroutine(LoginCall(formu));
-
-        if (keep)
-		{
-            Debug.Log("salvando player prefs");
-            PlayerPrefs.SetString("nickname", nickname);
-            PlayerPrefs.Save();
-		}
-		else
-		{
-            Debug.Log("no quiere q lo mantenga conectado");
-		}
-        
+        StartCoroutine(LoginCall(formu, keep));
 
 	}
-    IEnumerator LoginCall(WWWForm formu)
+    IEnumerator LoginCall(WWWForm formu, bool keep)
 	{
         SignLoginManager signLoginManager = FindObjectOfType<SignLoginManager>();
         Debug.Log("SM: Login usuario");
@@ -166,7 +154,7 @@ public class ServerManager : MonoBehaviour
         if (request.isNetworkError)
         {
             Debug.Log("SM: Error intentando logear usuario: " + request.error);
-            LoginCall(formu);
+            LoginCall(formu, keep);
         }
         else
         {
@@ -182,6 +170,13 @@ public class ServerManager : MonoBehaviour
                     user = newUser;
                     signLoginManager.txtInfoLogin.text = "¡BIENVENIDO!";
                     Debug.Log("se ha logeado: "+ newUser.nickname);
+
+                    if (keep)
+					{
+                        Debug.Log("salvando player prefs");
+                        PlayerPrefs.SetString("nickname", newUser.nickname);
+                        PlayerPrefs.Save();
+                    }
                     sceneFlow.ChangeScene("MainMenuScene");
                 }
                 catch (System.Exception e)
@@ -195,10 +190,7 @@ public class ServerManager : MonoBehaviour
             {
                 Debug.Log("SM: ERROR logeando: " + e);
             }
-			finally
-			{
-                StartCoroutine(GetNicknamesCall());
-            }
+			
         }
     }
 
@@ -232,22 +224,35 @@ public class ServerManager : MonoBehaviour
         string finalUri = "nicknames.php";
         UnityWebRequest request = UnityWebRequest.Get(serverUri + finalUri);
         yield return request.SendWebRequest();
-        User[] users = JsonHelper.FromJson<User>(JsonHelper.fixJson(request.downloadHandler.text));
-        foreach (User u in users)
-		{
-            if (u.nickname != user.nickname)
-			{
-                nicknames.Add(u.nickname);
-            }
-           
+        if (request.isNetworkError)
+        {
+            Debug.Log("SM: Error recuperando nicks: " + request.error);
+            Debug.Log("SM: Reintentando recuperar nicks...");
+            GetNicknames();
 		}
+		else
+		{
+            User[] users = JsonHelper.FromJson<User>(JsonHelper.fixJson(request.downloadHandler.text));
+            foreach (User u in users)
+            {
+                if (u.nickname != user.nickname)
+                {
+                    nicknames.Add(u.nickname);
+                }
+
+            }
+        }
+       
     }
 
     public void RecoverPlayerPrefs()
 	{
-        if (PlayerPrefs.GetString("nickname") != "")
+        string nicknamePref = "";
+        nicknamePref = PlayerPrefs.GetString("nickname");
+        if (nicknamePref != "")
 		{
-            Debug.Log("tengo un nick -> " + PlayerPrefs.GetString("nickname"));
+            Debug.Log("tengo un nick -> " + nicknamePref);
+            user.nickname = nicknamePref;
             sceneFlow.ChangeScene("MainMenuScene");
 		}
 	}
