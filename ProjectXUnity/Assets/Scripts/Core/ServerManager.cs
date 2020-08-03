@@ -18,6 +18,8 @@ public class ServerManager : MonoBehaviour
     SceneFlow sceneFlow;
     [SerializeField] public User user;
 
+    [SerializeField] GameObject loadingPanel;
+
     List<string> nicknames = new List<string>();
 	private void Awake()
 	{
@@ -50,8 +52,9 @@ public class ServerManager : MonoBehaviour
         Debug.Log("SM: llamando al ranking");
         string finalUri = "ranking.php";
         UnityWebRequest request = UnityWebRequest.Get(serverUri + finalUri);
+        Loading(true);
         yield return request.SendWebRequest();
-
+        Loading(false);
         if (request.isNetworkError)
         {
             Debug.Log("SM Error llamando al ranking: " + request.error);
@@ -87,8 +90,9 @@ public class ServerManager : MonoBehaviour
 		Debug.Log("SM: registrando usuario");
         string finalUri = "nuser.php";
         UnityWebRequest request = UnityWebRequest.Post(serverUri + finalUri, formu);
+        Loading(true);
         yield return request.SendWebRequest();
-
+        Loading(false);
         if (request.isNetworkError)
         {
             Debug.Log("SM Error intentando registrar usuario: " + request.error);
@@ -150,7 +154,9 @@ public class ServerManager : MonoBehaviour
         Debug.Log("SM: Login usuario");
         string finalUri = "login.php";
         UnityWebRequest request = UnityWebRequest.Post(serverUri + finalUri, formu);
+        Loading(true);
         yield return request.SendWebRequest();
+        Loading(false);
         if (request.isNetworkError)
         {
             Debug.Log("SM: Error intentando logear usuario: " + request.error);
@@ -209,9 +215,10 @@ public class ServerManager : MonoBehaviour
 	{
         string finalUri = "nuser.php";
         UnityWebRequest request = UnityWebRequest.Post(serverUri + finalUri, formu);
+        Loading(true);
         yield return request.SendWebRequest();
-
-	}
+        Loading(true);
+    }
 
     public List<string> GetNicknames()
 	{
@@ -223,7 +230,9 @@ public class ServerManager : MonoBehaviour
         Debug.Log("SM: recuperando nicknames de la BD");
         string finalUri = "nicknames.php";
         UnityWebRequest request = UnityWebRequest.Get(serverUri + finalUri);
+        Loading(true);
         yield return request.SendWebRequest();
+        Loading(false);
         if (request.isNetworkError)
         {
             Debug.Log("SM: Error recuperando nicks: " + request.error);
@@ -267,5 +276,10 @@ public class ServerManager : MonoBehaviour
         sceneFlow.ChangeScene("LoginScene");
 
 	}
+
+    private void Loading(bool loading) {
+        if (loading) loadingPanel.SetActive(true);
+        else loadingPanel.SetActive(false);
+    }
 
 }
