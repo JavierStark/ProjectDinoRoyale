@@ -32,4 +32,9 @@ public class SceneFlow : MonoBehaviour
     public void ResetTimeScale() {
         Time.timeScale = 1;
     }
+
+    public void Logout()
+	{
+        FindObjectOfType<ServerManager>().Logout();
+	}
 }

@@ -204,7 +204,6 @@ public class ServerManager : MonoBehaviour
 
     public void NewScore()
 	{
-        int puntPos = 10 - Int32.Parse(ScoreManager.instance.tmpPosition.text);
         int finalScore = ((10 - Int32.Parse(ScoreManager.instance.tmpPosition.text)) * ScoreManager.instance.bonus) + ScoreManager.instance.GetScore();
 
         WWWForm formu = new WWWForm();
@@ -246,10 +245,22 @@ public class ServerManager : MonoBehaviour
 
     public void RecoverPlayerPrefs()
 	{
-        if (PlayerPrefs.GetString("nickname") != null)
+        if (PlayerPrefs.GetString("nickname") != "")
 		{
+            Debug.Log("tengo un nick -> " + PlayerPrefs.GetString("nickname"));
             sceneFlow.ChangeScene("MainMenuScene");
 		}
+	}
+
+    public void Logout()
+	{
+        Debug.Log("Desconectando usuario");
+        PlayerPrefs.DeleteKey("nickname");
+        PlayerPrefs.Save();
+        user = null;
+
+        sceneFlow.ChangeScene("LoginScene");
+
 	}
 
 }
