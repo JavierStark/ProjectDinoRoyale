@@ -1,4 +1,5 @@
 ﻿using Runner.Core;
+using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -8,6 +9,8 @@ public class ScoreManager : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI tmpScore;
     [SerializeField] TextMeshProUGUI tmpCoins;
+    [SerializeField] TMP_Text gameOverScore;
+    [SerializeField] TMP_Text scoreByPosition;
     [SerializeField] public TextMeshProUGUI tmpPosition;
     [SerializeField] float scoreDelay;
     [SerializeField] int enemiesAlive = 9;
@@ -74,5 +77,11 @@ public class ScoreManager : MonoBehaviour
         else {
             return;
         }
+    }
+
+    public void GameOver() {
+        int finalScore = ((10 - Int32.Parse(tmpPosition.text)) * bonus) + score;
+        int bonusScore = (10 - Int32.Parse(tmpPosition.text))*bonus;
+        gameOverScore.text = score.ToString() + " + " + bonusScore + " = " + finalScore;
     }
 }
