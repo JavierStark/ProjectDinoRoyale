@@ -6648,51 +6648,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: LoadingPanel
       objectReference: {fileID: 0}
-    - target: {fileID: 1695818591071190267, guid: 3b8ec757674df394ab268f876005a771,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8851774890371240775, guid: 3b8ec757674df394ab268f876005a771,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8851774890371240775, guid: 3b8ec757674df394ab268f876005a771,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8851774890371240775, guid: 3b8ec757674df394ab268f876005a771,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8851774890371240775, guid: 3b8ec757674df394ab268f876005a771,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8851774890371240775, guid: 3b8ec757674df394ab268f876005a771,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8851774890371240775, guid: 3b8ec757674df394ab268f876005a771,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8851774890371240775, guid: 3b8ec757674df394ab268f876005a771,
-        type: 3}
-      propertyPath: m_Pivot.y
-      value: 0.27601904
-      objectReference: {fileID: 0}
-    - target: {fileID: 8851774890371240775, guid: 3b8ec757674df394ab268f876005a771,
-        type: 3}
-      propertyPath: m_Pivot.x
-      value: 0.5868363
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b8ec757674df394ab268f876005a771, type: 3}
 --- !u!224 &2130144827 stripped
