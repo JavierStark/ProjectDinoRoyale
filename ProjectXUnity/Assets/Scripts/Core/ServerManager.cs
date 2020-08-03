@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Networking;
-using UnityEngine.SocialPlatforms.Impl;
+using UnityEngine.SceneManagement;
 
 public class ServerManager : MonoBehaviour
 {
@@ -31,14 +31,13 @@ public class ServerManager : MonoBehaviour
 		}
 		DontDestroyOnLoad(this);
 
-        
-
         sceneFlow = FindObjectOfType<SceneFlow>();
         if(sceneFlow == null)
 		{
             sceneFlow = gameObject.AddComponent<SceneFlow>();
 		}
 
+        RecoverPlayerPrefs();
 	}
 
 	public void GetRanking()
@@ -137,9 +136,24 @@ public class ServerManager : MonoBehaviour
         }
     }
 
-    public void LoginUser(WWWForm formu)
+    public void LoginUser(string nickname, string pass, bool keep)
 	{
+        WWWForm formu = new WWWForm();
+        formu.AddField("nickname", nickname);
+        formu.AddField("password", pass);
         StartCoroutine(LoginCall(formu));
+
+        if (keep)
+		{
+            Debug.Log("salvando player prefs");
+            PlayerPrefs.SetString("nickname", nickname);
+            PlayerPrefs.Save();
+		}
+		else
+		{
+            Debug.Log("no quiere q lo mantenga conectado");
+		}
+        
 
 	}
     IEnumerator LoginCall(WWWForm formu)
@@ -168,7 +182,6 @@ public class ServerManager : MonoBehaviour
                     user = newUser;
                     signLoginManager.txtInfoLogin.text = "¡BIENVENIDO!";
                     Debug.Log("se ha logeado: "+ newUser.nickname);
-
                     sceneFlow.ChangeScene("MainMenuScene");
                 }
                 catch (System.Exception e)
@@ -192,8 +205,6 @@ public class ServerManager : MonoBehaviour
     public void NewScore()
 	{
         int puntPos = 10 - Int32.Parse(ScoreManager.instance.tmpPosition.text);
-        Debug.Log("10 - posicion: "+ puntPos);
-        Debug.Log("multiplicado por BONUS "+ ScoreManager.instance.bonus + " = " + puntPos * ScoreManager.instance.bonus);
         int finalScore = ((10 - Int32.Parse(ScoreManager.instance.tmpPosition.text)) * ScoreManager.instance.bonus) + ScoreManager.instance.GetScore();
 
         WWWForm formu = new WWWForm();
@@ -232,5 +243,13 @@ public class ServerManager : MonoBehaviour
            
 		}
     }
+
+    public void RecoverPlayerPrefs()
+	{
+        if (PlayerPrefs.GetString("nickname") != null)
+		{
+            sceneFlow.ChangeScene("MainMenuScene");
+		}
+	}
 
 }

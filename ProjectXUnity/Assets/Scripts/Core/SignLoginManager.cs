@@ -8,6 +8,7 @@ public class SignLoginManager : MonoBehaviour
 {
     GameObject panelLogin, panelSign;
     public TMP_Text txtInfoSign, txtInfoLogin;
+    Toggle checkBoxKeep;
 
     bool error = false;
 
@@ -25,6 +26,7 @@ public class SignLoginManager : MonoBehaviour
        panelSign = GameObject.Find("PanelSign");
        txtInfoSign = panelSign.GetComponentsInChildren<TMP_Text>().Where(d => d.gameObject.name == "TxtInfo").First();
        txtInfoLogin = panelLogin.GetComponentsInChildren<TMP_Text>().Where(d => d.gameObject.name == "TxtInfo").First();
+       checkBoxKeep = panelLogin.GetComponentsInChildren<Toggle>().Where(d => d.gameObject.name == "CheckBoxKeep").First();
     }
 
     public void CheckCredentials()
@@ -105,11 +107,8 @@ public class SignLoginManager : MonoBehaviour
                 nickname = i.text;
             }
         }
-
-        WWWForm formu = new WWWForm();
-        formu.AddField("nickname", nickname);
-        formu.AddField("password", pass);
-        ServerManager.instance.LoginUser(formu);
+   
+        ServerManager.instance.LoginUser(nickname, pass, checkBoxKeep.isOn);
     }
 
     public void ToSignIn() {
