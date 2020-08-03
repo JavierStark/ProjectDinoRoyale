@@ -12,7 +12,9 @@ public class Enemy : MonoBehaviour
             transform.Translate(new Vector3(-velocity, 0, 0)*Time.deltaTime*GameManager.instance.GlobalMultiplier());
         }
         else {
-            GetComponent<Animator>().SetTrigger("IsGameOver");
+            if(this.gameObject.tag == "Enemy") {
+                GetComponent<Animator>().SetTrigger("IsGameOver");
+            }            
         }
     }
 }
