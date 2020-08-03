@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using Runner.Core;
 
 namespace Runner.Enemy {
     public class Generator : MonoBehaviour {
@@ -13,10 +14,12 @@ namespace Runner.Enemy {
         float timeToWait;
 
 
-        public IEnumerator Spawn() {            
-            float timeToWait = UnityEngine.Random.Range(minTimeBetweenSpawns, maxTimeBetweenSpawns);
-            yield return new WaitForSeconds(timeToWait);
-            SpawnEnemy();
+        public IEnumerator Spawn() {
+            if (GameManager.instance.IsPlayerAlive) {
+                float timeToWait = UnityEngine.Random.Range(minTimeBetweenSpawns, maxTimeBetweenSpawns);
+                yield return new WaitForSeconds(timeToWait);
+                SpawnEnemy();
+            }            
         }
 
         protected void SpawnEnemy() {

@@ -12,8 +12,10 @@ namespace Runner.Core {
         }
 
         private void Update() {
-            offset = new Vector2(velocity, 0);
-            material.mainTextureOffset += offset*Time.deltaTime*GameManager.instance.GlobalMultiplier();            
+            if (GameManager.instance.IsPlayerAlive) {
+                offset = new Vector2(velocity, 0);
+                material.mainTextureOffset += offset*Time.deltaTime*GameManager.instance.GlobalMultiplier();
+            }                   
         }
 
     }

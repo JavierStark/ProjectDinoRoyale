@@ -35,6 +35,10 @@ namespace Runner.Player {
         }
 
         private void Update() {
+            if (!GameManager.instance.IsPlayerAlive) {
+                playerAnim.SetTrigger("IsPlayerDead");
+                return;
+            }
             jump = SimpleInput.GetAxis("Jump");
             vertical = SimpleInput.GetAxisRaw("Vertical");
 
@@ -48,7 +52,7 @@ namespace Runner.Player {
         }
 
         private void Crouch() {
-            if (vertical < 0) {
+            if (vertical < 0 && GameManager.instance.IsPlayerAlive) {
                 playerRB.gravityScale = 3;
                 playerAnim.SetBool("IsCrouching", true);
                 colliderRun.enabled = false;

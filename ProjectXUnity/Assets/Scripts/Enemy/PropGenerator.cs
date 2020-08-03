@@ -12,9 +12,9 @@ public class PropGenerator : Generator
     }
 
     private IEnumerator GenerateProp() {
-		if (GameManager.instance.IsPlayerAlive) {			
-			yield return this.Spawn();
-			StartCoroutine(GenerateProp());
-		}
+		
+		yield return this.Spawn();
+		StartCoroutine(GenerateProp());
+
 	}
 }

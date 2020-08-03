@@ -217,7 +217,7 @@ public class ServerManager : MonoBehaviour
         UnityWebRequest request = UnityWebRequest.Post(serverUri + finalUri, formu);
         Loading(true);
         yield return request.SendWebRequest();
-        Loading(true);
+        Loading(false);
     }
 
     public List<string> GetNicknames()
