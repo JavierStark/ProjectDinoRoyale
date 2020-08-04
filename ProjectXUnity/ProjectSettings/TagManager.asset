@@ -8,6 +8,8 @@ TagManager:
   - GameOver
   - EnemyGenerator
   - RankingPosition
+  - Tree
+  - BackMeteorite
   layers:
   - Default
   - TransparentFX

@@ -9,12 +9,20 @@ public class Enemy : MonoBehaviour
 
     void Update(){
         if (GameManager.instance.IsPlayerAlive) {
-            transform.Translate(new Vector3(-velocity, 0, 0)*Time.deltaTime*GameManager.instance.GlobalMultiplier());
+            if(gameObject.tag == "BackMeteorite") {
+                transform.Translate(new Vector3(-1, -1, 0)*velocity*Time.deltaTime*GameManager.instance.GlobalMultiplier());
+            }
+            else {
+                transform.Translate(Vector3.left*velocity*Time.deltaTime*GameManager.instance.GlobalMultiplier());
+            }            
         }
         else {
-            if(this.gameObject.tag == "Enemy") {
+            try {
                 GetComponent<Animator>().SetTrigger("IsGameOver");
-            }            
+            }
+            catch {
+                print(this.name + " no tiene animator, pero no te asustes no pasa nada");
+            }
         }
     }
 }
