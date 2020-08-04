@@ -3,6 +3,8 @@ using TMPro;
 using UnityEngine.UI;
 using System;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
 
 public class SignLoginManager : MonoBehaviour
 {
@@ -12,10 +14,12 @@ public class SignLoginManager : MonoBehaviour
 
     bool error = false;
 
-    string emptyNicknameMessage = "El nickname no puede estar en blanco";
-    string emptyPasswordMessage = "La contraseña no puede estar en blanco";
-    string failConfirmMessage = "La contraseña y la confirmación deben ser iguales";   
-    string correctFormMessage = "¡Todo Ok!";
+    string emptyNicknameMessage = "Nickname may not be empty";
+    string nicknameTooLongMessage = "Nickname may not be longer than 14 characters ";
+    string passwordTooLongMessage = "Password may not be longer than 20 characters";
+    string emptyPasswordMessage = "Password may not be empty";
+    string failConfirmMessage = "password and confirmation must match";   
+    string correctFormMessage = "¡Everything Ok!";
 
     string nickname = null;
     string pass = null;
@@ -50,25 +54,36 @@ public class SignLoginManager : MonoBehaviour
 			}
         }
 
-        if (nickname == string.Empty || nickname.Trim() == string.Empty)
+        if (nickname == string.Empty )
 		{
             error = true;
             txtInfoSign.text = emptyNicknameMessage.ToUpper();
-		}
-        else if (pass != string.Empty)
+		}else if (nickname.Length >= 15)
+		{
+            error = true;
+            txtInfoSign.text = nicknameTooLongMessage.ToUpper();
+
+        }
+        else if (pass == string.Empty)
         {
-            if (pass != confirmPass)
+            error = true;
+            txtInfoSign.text = emptyPasswordMessage.ToUpper();
+        }
+        else if (pass != string.Empty  )
+        {
+            if (pass.Length >= 21)
+			{
+                error = true;
+                txtInfoSign.text = passwordTooLongMessage.ToUpper();
+			}
+            else if (pass != confirmPass)
             {
                 error = true;
                 txtInfoSign.text = failConfirmMessage.ToUpper();
             }
           
 		}
-		else if (pass == string.Empty)
-		{
-            error = true;
-            txtInfoSign.text = emptyPasswordMessage.ToUpper();
-		}
+		
 
 		if (error == false) {
             txtInfoSign.text = correctFormMessage.ToUpper();
@@ -82,7 +97,7 @@ public class SignLoginManager : MonoBehaviour
             Debug.Log("voy a llamar al registro");
             WWWForm formu = new WWWForm();
 			formu.AddField("nickname", nickname);
-			formu.AddField("password", pass);
+			formu.AddField("password", toMd5(pass));
 			ServerManager.instance.SignUser(formu);
         }
 		else
@@ -108,7 +123,7 @@ public class SignLoginManager : MonoBehaviour
             }
         }
    
-        ServerManager.instance.LoginUser(nickname, pass, checkBoxKeep.isOn);
+        ServerManager.instance.LoginUser(nickname, toMd5(pass), checkBoxKeep.isOn);
     }
 
     public void ToSignIn() {
@@ -137,6 +152,23 @@ public class SignLoginManager : MonoBehaviour
             }
         }
     }
+    string toMd5(string t)
+	{
+        MD5 md5Hash = MD5.Create();
+        return GetMd5Hash(md5Hash, t);
+    }
 
+    static string GetMd5Hash(MD5 md5Hash, string input)
+    {
 
+        byte[] data = md5Hash.ComputeHash(Encoding.UTF8.GetBytes(input));
+        StringBuilder sBuilder = new StringBuilder();
+
+        for (int i = 0; i < data.Length; i++)
+        {
+            sBuilder.Append(data[i].ToString("x2"));
+        }
+
+        return sBuilder.ToString();
+    }
 }

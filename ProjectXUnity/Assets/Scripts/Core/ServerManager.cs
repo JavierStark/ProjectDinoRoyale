@@ -1,24 +1,33 @@
-﻿using Runner.Core;
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Networking;
-using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class ServerManager : MonoBehaviour
 {
     [SerializeField]
     string serverUri = "https://dinoroyale.000webhostapp.com/"; //https://dinoroyale.000webhostapp.com/
-
-
-    //no estoy seguro si necesitamos que esta clase sea singleton....
+    
     public static ServerManager instance;
+
     SceneFlow sceneFlow;
     [SerializeField] public User user;
 
+    string userAlreadyRegisteredMessage = "Nickname already exists";
+    string succesUserSignMessage = "success signing user up";
+    string incorrectLoginMessage = "wrong user or password";
+    string welcomeMessage = "WELCOME";
+
     [SerializeField] GameObject loadingPanel;
+    GameObject btnPanicQuit;
+    int timeoutLimit = 20;
+
+    string conectingMessage = "Trying to connect to the server...";
+    string unableConnectMessage = "The server might be down, please try again later...";
 
     List<string> nicknames = new List<string>();
 	private void Awake()
@@ -40,6 +49,7 @@ public class ServerManager : MonoBehaviour
 		}
         StartCoroutine(GetNicknamesCall());
         RecoverPlayerPrefs();
+       
 	}
 
 	public void GetRanking()
@@ -65,13 +75,10 @@ public class ServerManager : MonoBehaviour
 
             try
             {
-                Debug.Log("SM: Éxito recuperando ranking: " + JsonHelper.fixJson(request.downloadHandler.text));
+                Debug.Log("SM: Éxito recuperando ranking");
                 RankingPosition[] ranking = JsonHelper.FromJson<RankingPosition>(JsonHelper.fixJson(request.downloadHandler.text));
                 FindObjectOfType<Ranking>().RankingList = ranking.ToList();
-                foreach (RankingPosition r in ranking)
-				{
-                    Debug.Log("he recuperado: " + r.nickname + " con una puntuación de "+ r.score);
-				}
+               
             }
             catch (System.Exception e)
             {
@@ -111,13 +118,13 @@ public class ServerManager : MonoBehaviour
                     Debug.Log(request.downloadHandler.text);
                     if (request.downloadHandler.text.Contains("Error nick"))
 					{
-                        signLoginManager.txtInfoSign.text = "ESE NICKNAME YA EXISTE";
+                        signLoginManager.txtInfoSign.text = userAlreadyRegisteredMessage.ToUpper();
                         slm.ResetPasswordInputs();
 					}
 					else
 					{
                         User newUser = JsonUtility.FromJson<User>(response);
-                        signLoginManager.txtInfoSign.text = "USUARIO REGISTRADO CON ÉXITO";
+                        signLoginManager.txtInfoSign.text = succesUserSignMessage.ToUpper();
                         Debug.Log("SM: exito registrando usuario");
                        
                         slm.ToLogIn();
@@ -128,7 +135,7 @@ public class ServerManager : MonoBehaviour
 				}
 				catch (System.Exception e)
 				{
-                    signLoginManager.txtInfoSign.text = "NUESTROS SERVIDORES NO FUNCIONAN \nINTÉNTALO MÁS TARDE";
+                    signLoginManager.txtInfoSign.text = unableConnectMessage.ToUpper();
                     Debug.Log("SM: Error registrando usuario -> " + e);
 				}
                 
@@ -171,10 +178,9 @@ public class ServerManager : MonoBehaviour
 
                 try
                 {
-                    Debug.Log("la respuesta: " + response);
                     User newUser = JsonUtility.FromJson<User>(response);
                     user = newUser;
-                    signLoginManager.txtInfoLogin.text = "¡BIENVENIDO!";
+                    signLoginManager.txtInfoLogin.text = welcomeMessage.ToUpper() + " " + user.nickname ;
                     Debug.Log("se ha logeado: "+ newUser.nickname);
 
                     if (keep)
@@ -187,7 +193,7 @@ public class ServerManager : MonoBehaviour
                 }
                 catch (System.Exception e)
                 {
-                    signLoginManager.txtInfoLogin.text = "USUARIO O PASSWORD INCORRECTO";
+                    signLoginManager.txtInfoLogin.text = incorrectLoginMessage.ToUpper();
                     Debug.Log("SM: Error logeando -> " + e);
                 }
 
@@ -278,8 +284,26 @@ public class ServerManager : MonoBehaviour
 	}
 
     private void Loading(bool loading) {
-        if (loading) loadingPanel.SetActive(true);
-        else loadingPanel.SetActive(false);
+        if (loading)
+        {
+            StartCoroutine(TimeoutWaiter());
+            loadingPanel.SetActive(true);
+            btnPanicQuit = loadingPanel.GetComponentInChildren<Button>().gameObject;
+            btnPanicQuit.SetActive(false);
+            loadingPanel.GetComponentInChildren<TMP_Text>().text = conectingMessage.ToUpper();
+        }
+        else
+        {
+            loadingPanel.GetComponentInChildren<TMP_Text>().text = "";
+            loadingPanel.SetActive(false);
+        }
+    }
+
+    IEnumerator TimeoutWaiter()
+	{
+        yield return new WaitForSeconds(timeoutLimit);
+        loadingPanel.GetComponentInChildren<TMP_Text>().text = unableConnectMessage.ToUpper();
+        btnPanicQuit.SetActive(true);
     }
 
 }
