@@ -18,7 +18,9 @@ public class ServerManager : MonoBehaviour
     [SerializeField] public User user;
 
     string userAlreadyRegisteredMessage = "Nickname already exists";
-    string succesUserSign = "success signing user up";
+    string succesUserSignMessage = "success signing user up";
+    string incorrectLoginMessage = "wrong user or password";
+    string welcomeMessage = "WELCOME";
 
     [SerializeField] GameObject loadingPanel;
     GameObject btnPanicQuit;
@@ -122,7 +124,7 @@ public class ServerManager : MonoBehaviour
 					else
 					{
                         User newUser = JsonUtility.FromJson<User>(response);
-                        signLoginManager.txtInfoSign.text = succesUserSign.ToUpper();
+                        signLoginManager.txtInfoSign.text = succesUserSignMessage.ToUpper();
                         Debug.Log("SM: exito registrando usuario");
                        
                         slm.ToLogIn();
@@ -178,7 +180,7 @@ public class ServerManager : MonoBehaviour
                 {
                     User newUser = JsonUtility.FromJson<User>(response);
                     user = newUser;
-                    signLoginManager.txtInfoLogin.text = "¡BIENVENIDO!";
+                    signLoginManager.txtInfoLogin.text = welcomeMessage.ToUpper() + " " + user.nickname ;
                     Debug.Log("se ha logeado: "+ newUser.nickname);
 
                     if (keep)
@@ -191,7 +193,7 @@ public class ServerManager : MonoBehaviour
                 }
                 catch (System.Exception e)
                 {
-                    signLoginManager.txtInfoLogin.text = "USUARIO O PASSWORD INCORRECTO";
+                    signLoginManager.txtInfoLogin.text = incorrectLoginMessage.ToUpper();
                     Debug.Log("SM: Error logeando -> " + e);
                 }
 
