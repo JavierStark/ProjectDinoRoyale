@@ -3,6 +3,8 @@ using TMPro;
 using UnityEngine.UI;
 using System;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
 
 public class SignLoginManager : MonoBehaviour
 {
@@ -95,7 +97,7 @@ public class SignLoginManager : MonoBehaviour
             Debug.Log("voy a llamar al registro");
             WWWForm formu = new WWWForm();
 			formu.AddField("nickname", nickname);
-			formu.AddField("password", pass);
+			formu.AddField("password", toMd5(pass));
 			ServerManager.instance.SignUser(formu);
         }
 		else
@@ -121,7 +123,7 @@ public class SignLoginManager : MonoBehaviour
             }
         }
    
-        ServerManager.instance.LoginUser(nickname, pass, checkBoxKeep.isOn);
+        ServerManager.instance.LoginUser(nickname, toMd5(pass), checkBoxKeep.isOn);
     }
 
     public void ToSignIn() {
@@ -150,6 +152,27 @@ public class SignLoginManager : MonoBehaviour
             }
         }
     }
+    string toMd5(string t)
+	{
+        MD5 md5Hash = MD5.Create();
+        return GetMd5Hash(md5Hash, t);
+    }
 
+    static string GetMd5Hash(MD5 md5Hash, string input)
+    {
 
+        // Convert the input string to a byte array and compute the hash.
+        byte[] data = md5Hash.ComputeHash(Encoding.UTF8.GetBytes(input));
+        StringBuilder sBuilder = new StringBuilder();
+
+        // Loop through each byte of the hashed data
+        // and format each one as a hexadecimal string.
+        for (int i = 0; i < data.Length; i++)
+        {
+            sBuilder.Append(data[i].ToString("x2"));
+        }
+
+        // Return the hexadecimal string.
+        return sBuilder.ToString();
+    }
 }
