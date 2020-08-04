@@ -13,6 +13,7 @@ public class SignLoginManager : MonoBehaviour
     bool error = false;
 
     string emptyNicknameMessage = "El nickname no puede estar en blanco";
+    string tooLongMessage = "El nickname o la password no pueden tener más de 14 caracteres";
     string emptyPasswordMessage = "La contraseña no puede estar en blanco";
     string failConfirmMessage = "La contraseña y la confirmación deben ser iguales";   
     string correctFormMessage = "¡Todo Ok!";
@@ -50,25 +51,36 @@ public class SignLoginManager : MonoBehaviour
 			}
         }
 
-        if (nickname == string.Empty || nickname.Trim() == string.Empty)
+        if (nickname == string.Empty )
 		{
             error = true;
             txtInfoSign.text = emptyNicknameMessage.ToUpper();
-		}
-        else if (pass != string.Empty)
+		}else if (nickname.Length >= 15)
+		{
+            error = true;
+            txtInfoSign.text = tooLongMessage.ToUpper();
+
+        }
+        else if (pass == string.Empty)
         {
-            if (pass != confirmPass)
+            error = true;
+            txtInfoSign.text = emptyPasswordMessage.ToUpper();
+        }
+        else if (pass != string.Empty  )
+        {
+            if (pass.Length >= 15)
+			{
+                error = true;
+                txtInfoSign.text = tooLongMessage.ToUpper();
+			}
+            else if (pass != confirmPass)
             {
                 error = true;
                 txtInfoSign.text = failConfirmMessage.ToUpper();
             }
           
 		}
-		else if (pass == string.Empty)
-		{
-            error = true;
-            txtInfoSign.text = emptyPasswordMessage.ToUpper();
-		}
+		
 
 		if (error == false) {
             txtInfoSign.text = correctFormMessage.ToUpper();
