@@ -9,6 +9,7 @@ namespace Runner.Player {
         private float vertical;
         [Range(1, 30)] [SerializeField] float jumpForce;
         bool invincible = false;
+
         
         //References to components
         Rigidbody2D playerRB;
@@ -27,6 +28,10 @@ namespace Runner.Player {
         [Header("Sound FX")]        
         [SerializeField] AudioClip[] jumpSoundFXs = new AudioClip[3];
 
+        [Header("Particles and Shake")]
+        [SerializeField] GameObject particleSystem;
+        [SerializeField] float shakeDuration;
+
 
         private void Start() {
             playerRB = GetComponent<Rigidbody2D>();
@@ -39,6 +44,7 @@ namespace Runner.Player {
                 playerAnim.SetTrigger("IsPlayerDead");
                 return;
             }
+
             jump = SimpleInput.GetAxis("Jump");
             vertical = SimpleInput.GetAxisRaw("Vertical");
 
@@ -112,6 +118,15 @@ namespace Runner.Player {
             invincible = false;
             playerAnim.SetBool("IsRainbow", false);
         }
-	
-	}
+
+        private void OnCollisionEnter2D(Collision2D collision) {
+            if(collision.relativeVelocity.y > 1) {
+                GameObject particles = Instantiate(particleSystem, particleSystem.transform.position, particleSystem.transform.rotation);
+                CameraShake.instance.Shake(shakeDuration);
+                Destroy(particles, 1);
+            }
+        }
+
+    }
+
 }

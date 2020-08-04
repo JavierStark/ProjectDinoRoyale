@@ -2745,6 +2745,21 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 58.600098
       objectReference: {fileID: 0}
+    - target: {fileID: 9028796859414044608, guid: 0f65655c3f9184d4dbeb3f3c23be6a14,
+        type: 3}
+      propertyPath: m_text
+      value: .................
+      objectReference: {fileID: 0}
+    - target: {fileID: 9028796859414044608, guid: 0f65655c3f9184d4dbeb3f3c23be6a14,
+        type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 9028796859414044608, guid: 0f65655c3f9184d4dbeb3f3c23be6a14,
+        type: 3}
+      propertyPath: m_textInfo.lineCount
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9028796859764357648, guid: 0f65655c3f9184d4dbeb3f3c23be6a14,
         type: 3}
       propertyPath: m_LocalPosition.x
