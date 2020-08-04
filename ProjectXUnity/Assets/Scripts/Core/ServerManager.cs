@@ -65,13 +65,10 @@ public class ServerManager : MonoBehaviour
 
             try
             {
-                Debug.Log("SM: Éxito recuperando ranking: " + JsonHelper.fixJson(request.downloadHandler.text));
+                Debug.Log("SM: Éxito recuperando ranking");
                 RankingPosition[] ranking = JsonHelper.FromJson<RankingPosition>(JsonHelper.fixJson(request.downloadHandler.text));
                 FindObjectOfType<Ranking>().RankingList = ranking.ToList();
-                foreach (RankingPosition r in ranking)
-				{
-                    Debug.Log("he recuperado: " + r.nickname + " con una puntuación de "+ r.score);
-				}
+               
             }
             catch (System.Exception e)
             {
@@ -171,7 +168,6 @@ public class ServerManager : MonoBehaviour
 
                 try
                 {
-                    Debug.Log("la respuesta: " + response);
                     User newUser = JsonUtility.FromJson<User>(response);
                     user = newUser;
                     signLoginManager.txtInfoLogin.text = "¡BIENVENIDO!";
