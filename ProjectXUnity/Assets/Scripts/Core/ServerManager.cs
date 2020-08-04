@@ -17,6 +17,9 @@ public class ServerManager : MonoBehaviour
     SceneFlow sceneFlow;
     [SerializeField] public User user;
 
+    string userAlreadyRegisteredMessage = "Nickname already exists";
+    string succesUserSign = "success signing user up";
+
     [SerializeField] GameObject loadingPanel;
     GameObject btnPanicQuit;
     int timeoutLimit = 20;
@@ -113,13 +116,13 @@ public class ServerManager : MonoBehaviour
                     Debug.Log(request.downloadHandler.text);
                     if (request.downloadHandler.text.Contains("Error nick"))
 					{
-                        signLoginManager.txtInfoSign.text = "ESE NICKNAME YA EXISTE";
+                        signLoginManager.txtInfoSign.text = userAlreadyRegisteredMessage.ToUpper();
                         slm.ResetPasswordInputs();
 					}
 					else
 					{
                         User newUser = JsonUtility.FromJson<User>(response);
-                        signLoginManager.txtInfoSign.text = "USUARIO REGISTRADO CON ÉXITO";
+                        signLoginManager.txtInfoSign.text = succesUserSign.ToUpper();
                         Debug.Log("SM: exito registrando usuario");
                        
                         slm.ToLogIn();

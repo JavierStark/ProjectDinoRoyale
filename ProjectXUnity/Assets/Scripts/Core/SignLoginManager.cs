@@ -14,12 +14,12 @@ public class SignLoginManager : MonoBehaviour
 
     bool error = false;
 
-    string emptyNicknameMessage = "El nickname no puede estar en blanco";
-    string nicknameTooLongMessage = "El nickname no puede tener más de 14 caracteres";
-    string passwordTooLongMessage = "La contraseña no puede tener más de 20 caracteres";
-    string emptyPasswordMessage = "La contraseña no puede estar en blanco";
-    string failConfirmMessage = "La contraseña y la confirmación deben ser iguales";   
-    string correctFormMessage = "¡Todo Ok!";
+    string emptyNicknameMessage = "Nickname may not be empty";
+    string nicknameTooLongMessage = "Nickname may not be longer than 14 characters ";
+    string passwordTooLongMessage = "Password may not be longer than 20 characters";
+    string emptyPasswordMessage = "Password may not be empty";
+    string failConfirmMessage = "password and confirmation must match";   
+    string correctFormMessage = "¡Everything Ok!";
 
     string nickname = null;
     string pass = null;
