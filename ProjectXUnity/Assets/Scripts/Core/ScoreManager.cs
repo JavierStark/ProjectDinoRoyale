@@ -8,7 +8,6 @@ using UnityEngine.UI;
 public class ScoreManager : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI tmpScore;
-    [SerializeField] TextMeshProUGUI tmpCoins;
     [SerializeField] TMP_Text gameOverScore;
     [SerializeField] TMP_Text scoreByPosition;
     [SerializeField] public TextMeshProUGUI tmpPosition;
@@ -16,9 +15,11 @@ public class ScoreManager : MonoBehaviour
     [SerializeField] int enemiesAlive = 9;
     public int bonus = 2;
 
-    int score;
+    [SerializeField] int score;
 
     public static ScoreManager instance;
+
+    private IEnumerator increaseScoreCoroutine;
 
 	private void Awake()
 	{
@@ -43,21 +44,21 @@ public class ScoreManager : MonoBehaviour
 
         tmpPosition.text = "10";
 
-        StartCoroutine(IncreaseScore());
+        increaseScoreCoroutine = IncreaseScore();
+        StartCoroutine(increaseScoreCoroutine);
     }
 
 
     private IEnumerator IncreaseScore()
 	{
-        if (GameManager.instance.IsPlayerAlive) {
+        do {
+            if (GameManager.instance.IsPlayerAlive) yield return 0;
             yield return new WaitForSeconds(scoreDelay);
+            if (!GameManager.instance.IsPlayerAlive) yield return 0;
             score++;
+            if (!GameManager.instance.IsPlayerAlive) yield return 0;
             tmpScore.text = score.ToString();
-            if (GameManager.instance.IsPlayerAlive)
-		    {
-                StartCoroutine(IncreaseScore());
-            }
-        }
+        } while (GameManager.instance.IsPlayerAlive);
     }
 
     public void EnemyDied (){
@@ -79,9 +80,15 @@ public class ScoreManager : MonoBehaviour
         }
     }
 
-    public void GameOver() {
+    public void GameOver() {        
         int finalScore = ((10 - Int32.Parse(tmpPosition.text)) * bonus) + score;
         int bonusScore = (10 - Int32.Parse(tmpPosition.text))*bonus;
-        gameOverScore.text = score.ToString() + " + " + bonusScore + " = " + finalScore;
+        gameOverScore.text = (score).ToString() + " + " + bonusScore + " = " + finalScore;
+    }
+
+    public void StopScoring() {
+        StopCoroutine(increaseScoreCoroutine);
+        increaseScoreCoroutine = null;
+        print("para para a a a a ");
     }
 }
