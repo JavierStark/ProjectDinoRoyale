@@ -7,6 +7,14 @@ public class UserNameInMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GetComponent<TMPro.TMP_Text>().text = ServerManager.instance.user.nickname;
+		try
+		{
+			GetComponent<TMPro.TMP_Text>().text = ServerManager.instance.user.nickname;
+		}
+		catch (System.Exception e)
+		{
+			Debug.Log(e);
+		}
+       
     }
 }
