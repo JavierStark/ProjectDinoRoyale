@@ -241,7 +241,7 @@ public class ServerManager : MonoBehaviour
         {
             Debug.Log("SM: Error recuperando nicks: " + request.error);
             Debug.Log("SM: Reintentando recuperar nicks...");
-            StartCoroutine(GetNicknamesCall());
+            //StartCoroutine(GetNicknamesCall());
 		}
 		else
 		{
@@ -323,7 +323,7 @@ public class ServerManager : MonoBehaviour
     public void SaveTempScore(int score)
 	{
         int oldScore = PlayerPrefs.GetInt("score");
-		if (score > oldScore)
+		if (score >= oldScore)
 		{
 			Debug.Log("SM: intentando salvar " + score + " puntos, para: " + user.nickname);
 			WWWForm formu = new WWWForm();
