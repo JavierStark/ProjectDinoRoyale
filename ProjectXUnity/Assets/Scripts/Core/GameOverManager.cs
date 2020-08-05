@@ -6,7 +6,4 @@ using UnityEngine.SceneManagement;
 public class GameOverManager : MonoBehaviour
 {
 
-    private void OnEnable() {
-        print("stop");
-    }
 }

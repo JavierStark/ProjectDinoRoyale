@@ -387,6 +387,8 @@ MonoBehaviour:
   faceImage: {fileID: 6656780708745996223}
   crossImage: {fileID: 6269330745248775096}
   dinoInfo: {fileID: 11400000, guid: fb984eb6cb639c44d99f522f9a575397, type: 2}
+  explosionParticles: {fileID: 3475830876697295988, guid: ebe604c035733c34abf11b50426e777d,
+    type: 3}
 --- !u!95 &6784782950824665689
 Animator:
   serializedVersion: 3

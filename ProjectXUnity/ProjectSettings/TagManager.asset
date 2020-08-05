@@ -56,3 +56,6 @@ TagManager:
   - name: UI
     uniqueID: 2528586921
     locked: 0
+  - name: Explosion
+    uniqueID: 2692231693
+    locked: 0

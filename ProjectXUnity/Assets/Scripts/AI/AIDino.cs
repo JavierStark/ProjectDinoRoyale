@@ -20,7 +20,9 @@ public class AIDino : MonoBehaviour
     [SerializeField] Image faceImage;
     [SerializeField] Image crossImage;
     [SerializeField] DinosScriptableObject dinoInfo;
+    [SerializeField] GameObject explosionParticles;
     Animator animator;
+
 
 
     IEnumerator Start()
@@ -78,9 +80,9 @@ public class AIDino : MonoBehaviour
         return !dead;
     }
 
-    public void Attacked(int diceFaces, int difficulty) {
-        if (ThrowDice(diceFaces)>=difficulty) {
-            Death();
-        }
+    public void Attacked(int diceFaces) {
+        GameObject currentParticles = Instantiate(explosionParticles, Camera.main.ScreenToWorldPoint(crossImage.transform.position) , explosionParticles.transform.rotation);
+        Death();
+        
     }
 }

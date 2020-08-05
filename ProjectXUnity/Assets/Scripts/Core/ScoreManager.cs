@@ -89,6 +89,5 @@ public class ScoreManager : MonoBehaviour
     public void StopScoring() {
         StopCoroutine(increaseScoreCoroutine);
         increaseScoreCoroutine = null;
-        print("para para a a a a ");
     }
 }
