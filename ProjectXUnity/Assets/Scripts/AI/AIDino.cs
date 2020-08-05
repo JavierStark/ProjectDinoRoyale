@@ -69,7 +69,7 @@ public class AIDino : MonoBehaviour
     }
 
     private void Death() {
-        animator.SetBool("isDead", true);
+        dinoName.color = new Color32(0, 0, 0, 0);
         crossImage.enabled = true;
         dead = true;
 
@@ -82,7 +82,6 @@ public class AIDino : MonoBehaviour
 
     public void Attacked(int diceFaces) {
         GameObject currentParticles = Instantiate(explosionParticles, Camera.main.ScreenToWorldPoint(crossImage.transform.position) , explosionParticles.transform.rotation);
-        Death();
-        
+        Death();        
     }
 }

@@ -314,7 +314,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b940233ad4a34cd4fb7e54f37d7d1c17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  price: 30
+  price: 1
   powerUpType: 0
   invincibilityDuration: 0
   diceFaces: 2
