@@ -211,21 +211,19 @@ public class ServerManager : MonoBehaviour
     public void NewScore()
 	{
         int finalScore = ((10 - Int32.Parse(ScoreManager.instance.tmpPosition.text)) * ScoreManager.instance.bonus) + ScoreManager.instance.GetScore();
-
-        WWWForm formu = new WWWForm();
-        formu.AddField("nickname", user.nickname);
-        formu.AddField("score", finalScore);
-        Debug.Log("SM: intentando salvar " + finalScore +" puntos, para: " + user.nickname);
-        StartCoroutine(NewScoreCall(formu));
+        SaveTempScore(finalScore);
 	}
 
     IEnumerator NewScoreCall(WWWForm formu)
 	{
         string finalUri = "nuser.php";
         UnityWebRequest request = UnityWebRequest.Post(serverUri + finalUri, formu);
-        Loading(true);
+       
         yield return request.SendWebRequest();
-        Loading(false);
+        if (!request.isNetworkError)
+        {
+            PlayerPrefs.SetInt("score", 0);
+        }
     }
 
     public List<string> GetNicknames()
@@ -322,9 +320,18 @@ public class ServerManager : MonoBehaviour
         nicknames.Add("Dino Chan");
     }
 
-    public void SaveTempScore()
+    public void SaveTempScore(int score)
 	{
-
+        int oldScore = PlayerPrefs.GetInt("score");
+		if (score > oldScore)
+		{
+			Debug.Log("SM: intentando salvar " + score + " puntos, para: " + user.nickname);
+			WWWForm formu = new WWWForm();
+			formu.AddField("nickname", user.nickname);
+			formu.AddField("score", score);
+            PlayerPrefs.SetInt("score", score);
+			StartCoroutine(NewScoreCall(formu));
+		}
 	}
 
 }
