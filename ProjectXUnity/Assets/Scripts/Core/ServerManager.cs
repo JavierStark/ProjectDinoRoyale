@@ -47,8 +47,10 @@ public class ServerManager : MonoBehaviour
 		{
             sceneFlow = gameObject.AddComponent<SceneFlow>();
 		}
+        InitTempNicknames();
         StartCoroutine(GetNicknamesCall());
         RecoverPlayerPrefs();
+        
        
 	}
 
@@ -236,17 +238,16 @@ public class ServerManager : MonoBehaviour
         Debug.Log("SM: recuperando nicknames de la BD");
         string finalUri = "nicknames.php";
         UnityWebRequest request = UnityWebRequest.Get(serverUri + finalUri);
-        Loading(true);
         yield return request.SendWebRequest();
-        Loading(false);
         if (request.isNetworkError)
         {
             Debug.Log("SM: Error recuperando nicks: " + request.error);
             Debug.Log("SM: Reintentando recuperar nicks...");
-            GetNicknames();
+            StartCoroutine(GetNicknamesCall());
 		}
 		else
 		{
+            nicknames.Clear();
             User[] users = JsonHelper.FromJson<User>(JsonHelper.fixJson(request.downloadHandler.text));
             foreach (User u in users)
             {
@@ -306,5 +307,24 @@ public class ServerManager : MonoBehaviour
         loadingPanel.GetComponentInChildren<TMP_Text>().text = unableConnectMessage.ToUpper();
         btnPanicQuit.SetActive(true);
     }
+
+    void InitTempNicknames()
+	{
+        nicknames.Add("Al-PaDino");
+        nicknames.Add("DinoMorsa");
+        nicknames.Add("GalloSaurio");
+        nicknames.Add("VelociTractor");
+        nicknames.Add("Tyranitar");
+        nicknames.Add("Morcilloide");
+        nicknames.Add("Chuck Dinorris");
+        nicknames.Add("AlaDino");
+        nicknames.Add("Robert de Dino");
+        nicknames.Add("Dino Chan");
+    }
+
+    public void SaveTempScore()
+	{
+
+	}
 
 }
