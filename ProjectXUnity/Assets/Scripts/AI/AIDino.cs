@@ -81,7 +81,8 @@ public class AIDino : MonoBehaviour
     }
 
     public void Attacked(int diceFaces) {
-        GameObject currentParticles = Instantiate(explosionParticles, Camera.main.ScreenToWorldPoint(crossImage.transform.position) , explosionParticles.transform.rotation);
+        GameObject currentParticles = Instantiate(explosionParticles, new Vector3(crossImage.transform.position.x ,crossImage.transform.position.y,-5) , explosionParticles.transform.rotation);
+        Destroy(currentParticles, 0.5f);
         Death();        
     }
 }
