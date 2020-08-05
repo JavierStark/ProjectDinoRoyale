@@ -240,7 +240,7 @@ public class ServerManager : MonoBehaviour
         if (request.isNetworkError)
         {
             Debug.Log("SM: Error recuperando nicks: " + request.error);
-            Debug.Log("SM: Reintentando recuperar nicks...");
+            //Debug.Log("SM: Reintentando recuperar nicks...");
             //StartCoroutine(GetNicknamesCall());
 		}
 		else
