@@ -47,8 +47,10 @@ public class ServerManager : MonoBehaviour
 		{
             sceneFlow = gameObject.AddComponent<SceneFlow>();
 		}
+        InitTempNicknames();
         StartCoroutine(GetNicknamesCall());
         RecoverPlayerPrefs();
+        
        
 	}
 
@@ -209,21 +211,19 @@ public class ServerManager : MonoBehaviour
     public void NewScore()
 	{
         int finalScore = ((10 - Int32.Parse(ScoreManager.instance.tmpPosition.text)) * ScoreManager.instance.bonus) + ScoreManager.instance.GetScore();
-
-        WWWForm formu = new WWWForm();
-        formu.AddField("nickname", user.nickname);
-        formu.AddField("score", finalScore);
-        Debug.Log("SM: intentando salvar " + finalScore +" puntos, para: " + user.nickname);
-        StartCoroutine(NewScoreCall(formu));
+        SaveTempScore(finalScore);
 	}
 
     IEnumerator NewScoreCall(WWWForm formu)
 	{
         string finalUri = "nuser.php";
         UnityWebRequest request = UnityWebRequest.Post(serverUri + finalUri, formu);
-        Loading(true);
+       
         yield return request.SendWebRequest();
-        Loading(false);
+        if (!request.isNetworkError)
+        {
+            PlayerPrefs.SetInt("score", 0);
+        }
     }
 
     public List<string> GetNicknames()
@@ -236,17 +236,16 @@ public class ServerManager : MonoBehaviour
         Debug.Log("SM: recuperando nicknames de la BD");
         string finalUri = "nicknames.php";
         UnityWebRequest request = UnityWebRequest.Get(serverUri + finalUri);
-        Loading(true);
         yield return request.SendWebRequest();
-        Loading(false);
         if (request.isNetworkError)
         {
             Debug.Log("SM: Error recuperando nicks: " + request.error);
-            Debug.Log("SM: Reintentando recuperar nicks...");
-            GetNicknames();
+            //Debug.Log("SM: Reintentando recuperar nicks...");
+            //StartCoroutine(GetNicknamesCall());
 		}
 		else
 		{
+            nicknames.Clear();
             User[] users = JsonHelper.FromJson<User>(JsonHelper.fixJson(request.downloadHandler.text));
             foreach (User u in users)
             {
@@ -306,5 +305,33 @@ public class ServerManager : MonoBehaviour
         loadingPanel.GetComponentInChildren<TMP_Text>().text = unableConnectMessage.ToUpper();
         btnPanicQuit.SetActive(true);
     }
+
+    void InitTempNicknames()
+	{
+        nicknames.Add("Al-PaDino");
+        nicknames.Add("DinoMorsa");
+        nicknames.Add("GalloSaurio");
+        nicknames.Add("VelociTractor");
+        nicknames.Add("Tyranitar");
+        nicknames.Add("Morcilloide");
+        nicknames.Add("Chuck Dinorris");
+        nicknames.Add("AlaDino");
+        nicknames.Add("Robert de Dino");
+        nicknames.Add("Dino Chan");
+    }
+
+    public void SaveTempScore(int score)
+	{
+        int oldScore = PlayerPrefs.GetInt("score");
+		if (score >= oldScore)
+		{
+			Debug.Log("SM: intentando salvar " + score + " puntos, para: " + user.nickname);
+			WWWForm formu = new WWWForm();
+			formu.AddField("nickname", user.nickname);
+			formu.AddField("score", score);
+            PlayerPrefs.SetInt("score", score);
+			StartCoroutine(NewScoreCall(formu));
+		}
+	}
 
 }

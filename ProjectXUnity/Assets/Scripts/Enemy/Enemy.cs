@@ -21,7 +21,7 @@ public class Enemy : MonoBehaviour
                 GetComponent<Animator>().SetTrigger("IsGameOver");
             }
             catch {
-                print(this.name + " no tiene animator, pero no te asustes no pasa nada");
+               
             }
         }
     }

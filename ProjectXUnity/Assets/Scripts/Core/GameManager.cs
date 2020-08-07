@@ -24,6 +24,10 @@ namespace Runner.Core {
 
         private void Start() {
 			globalMultiplier = 1f;
+			if (PlayerPrefs.GetInt("score") > 0)
+			{
+				ServerManager.instance.SaveTempScore(PlayerPrefs.GetInt("score"));
+			}
             if(IsPlayerAlive){
 				enemiesGenerators = FindObjectsOfType<EnemyGenerator>();
 				Time.timeScale = 1;
