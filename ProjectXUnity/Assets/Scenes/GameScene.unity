@@ -4952,6 +4952,10 @@ PrefabInstance:
       propertyPath: gameOverScore
       value: 
       objectReference: {fileID: 1859501374}
+    - target: {fileID: 427807319, guid: f0cda6ecdc0d3e644b2d6efe207cbb00, type: 3}
+      propertyPath: scoreDelay
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6254282909088455956, guid: f0cda6ecdc0d3e644b2d6efe207cbb00,
         type: 3}
       propertyPath: m_LocalPosition.x
