@@ -15,8 +15,8 @@ namespace Runner.Player {
         Rigidbody2D playerRB;
         Animator playerAnim;
         AudioSource playerAudioSource;
-        [SerializeField] BoxCollider2D colliderRun;
-        [SerializeField] BoxCollider2D colliderCrouch;
+        [SerializeField] PolygonCollider2D colliderRun;
+        [SerializeField] PolygonCollider2D colliderCrouch;
 
         //Ground Checker
         [Header("Ground Checker")]
