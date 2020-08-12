@@ -22,7 +22,7 @@ namespace Runner.Core {
 			dinosScriptableObject.Reset();
 		}
 
-        private void Start() {
+        private void Start() {			
 			globalMultiplier = 1f;
 			if (PlayerPrefs.GetInt("score") > 0)
 			{
