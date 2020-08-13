@@ -58,7 +58,10 @@ namespace Runner.Core {
 		public void GameOver() {
 			ScoreManager.instance.StopScoring();
 			ScoreManager.instance.GameOver();
-			ServerManager.instance.NewScore();			
+			if (!string.IsNullOrEmpty(ServerManager.instance.user.nickname))
+			{
+				ServerManager.instance.NewScore();
+			}
 			gameOverCanvas.gameObject.SetActive(true);			
 
 		}
