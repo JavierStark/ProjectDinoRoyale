@@ -10,9 +10,12 @@ public class SignLoginManager : MonoBehaviour
 {
     GameObject panelLogin, panelSign;
     public TMP_Text txtInfoSign, txtInfoLogin;
-    Toggle checkBoxKeep;
+    Toggle checkBoxKeep, checkOfflineMode;
+
+    TMP_InputField[] loginInputs;
 
     bool error = false;
+    bool offlineMode = false;
 
     string emptyNicknameMessage = "Nickname may not be empty";
     string nicknameTooLongMessage = "Nickname may not be longer than 14 characters ";
@@ -31,9 +34,39 @@ public class SignLoginManager : MonoBehaviour
        txtInfoSign = panelSign.GetComponentsInChildren<TMP_Text>().Where(d => d.gameObject.name == "TxtInfo").First();
        txtInfoLogin = panelLogin.GetComponentsInChildren<TMP_Text>().Where(d => d.gameObject.name == "TxtInfo").First();
        checkBoxKeep = panelLogin.GetComponentsInChildren<Toggle>().Where(d => d.gameObject.name == "CheckBoxKeep").First();
-    }
+       checkOfflineMode = panelLogin.GetComponentsInChildren<Toggle>().Where(d => d.gameObject.name == "CheckBoxOffline").First();
 
-    public void CheckCredentials()
+        if (panelLogin != null)
+		{
+            loginInputs = panelLogin.GetComponentsInChildren<TMP_InputField>();
+        }
+
+    }
+	private void Update()
+	{ 
+
+        if (checkOfflineMode.isOn)
+		{
+            foreach(TMP_InputField inputs in loginInputs)
+			{
+                inputs.interactable = false;
+			}
+            checkBoxKeep.interactable = false;
+            checkBoxKeep.isOn = false;
+            offlineMode = true;
+		}
+		else
+		{
+            foreach (TMP_InputField inputs in loginInputs)
+            {
+                inputs.interactable = true;
+            }
+            checkBoxKeep.interactable = true;
+            offlineMode = false;
+        }
+	}
+
+	public void CheckCredentials()
 	{
         error = false;
         string confirmPass = null;
@@ -109,21 +142,30 @@ public class SignLoginManager : MonoBehaviour
 
     public void Login()
 	{
-        TMP_InputField[] inputs = panelLogin.GetComponentsInChildren<TMP_InputField>();
-        foreach (TMP_InputField i in inputs)
-        {
-            if (i.name == "InputPassword")
+        if (!offlineMode)
+		{
+            foreach (TMP_InputField i in loginInputs)
             {
-                pass = i.text;
+                if (i.name == "InputPassword")
+                {
+                    pass = i.text;
 
+                }
+                else if (i.name == "InputNickname")
+                {
+                    nickname = i.text;
+                }
             }
-            else if (i.name == "InputNickname")
-            {
-                nickname = i.text;
-            }
+            ServerManager.instance.LoginUser(nickname, toMd5(pass), checkBoxKeep.isOn);
         }
+		else
+		{
+            SceneFlow sf = FindObjectOfType<SceneFlow>();
+            sf.ChangeScene("MainMenuScene");
+		}
+        
    
-        ServerManager.instance.LoginUser(nickname, toMd5(pass), checkBoxKeep.isOn);
+       
     }
 
     public void ToSignIn() {
