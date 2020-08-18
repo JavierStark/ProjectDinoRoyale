@@ -6,6 +6,13 @@ using UnityEngine.SceneManagement;
 public class SceneFlow : MonoBehaviour
 {
     public void ChangeScene(string sceneName) {
+        if(MusicManager.instance != null){
+            switch(sceneName){
+                case "GameScene" : MusicManager.instance.GameMusic(); break;
+                case "MainMenuScene" : MusicManager.instance.MenuMusic(); break;
+                default: break;
+            }
+        }
         SceneManager.LoadScene(sceneName);
         ResetTimeScale();
     }

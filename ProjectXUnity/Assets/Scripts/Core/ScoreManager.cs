@@ -39,7 +39,7 @@ public class ScoreManager : MonoBehaviour
         //Esto solo lo he puesto x si se nos olvida setearlo desde el editor de Unity, q nunca explote
         if (scoreDelay <= 0)
 		{
-            scoreDelay = 1;
+            scoreDelay = 3;
 		}
 
         tmpPosition.text = "10";
@@ -63,6 +63,8 @@ public class ScoreManager : MonoBehaviour
 
     public void EnemyDied (){
         enemiesAlive--;
+        scoreDelay -= 0.22f;
+        print(scoreDelay);
         tmpPosition.text = (enemiesAlive+1).ToString();
     }
 
