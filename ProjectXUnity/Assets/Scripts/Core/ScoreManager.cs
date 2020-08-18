@@ -11,6 +11,8 @@ public class ScoreManager : MonoBehaviour
     [SerializeField] TMP_Text gameOverScore;
     [SerializeField] TMP_Text scoreByPosition;
     [SerializeField] public TextMeshProUGUI tmpPosition;
+    [SerializeField] Animator nightAnimator;
+    bool night = false;
     [SerializeField] float scoreDelay;
     [SerializeField] int enemiesAlive = 9;
     public int bonus = 2;
@@ -56,6 +58,7 @@ public class ScoreManager : MonoBehaviour
             yield return new WaitForSeconds(scoreDelay);
             if (!GameManager.instance.IsPlayerAlive) yield return 0;
             score++;
+            if (score%50 == 0) ChangeDayTime();
             if (!GameManager.instance.IsPlayerAlive) yield return 0;
             tmpScore.text = score.ToString();
         } while (GameManager.instance.IsPlayerAlive);
@@ -92,4 +95,16 @@ public class ScoreManager : MonoBehaviour
     public void StopScoring() {
         StopCoroutine(increaseScoreCoroutine);
     }
+
+    private void ChangeDayTime() {
+        if (!night) {
+            nightAnimator.SetTrigger("ToNight");
+            night = true;
+        }
+        else {
+            nightAnimator.SetTrigger("ToDay");
+            night = false;
+        }
+    }
+
 }

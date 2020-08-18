@@ -19,6 +19,7 @@ public class MusicManager : MonoBehaviour
 
     private void Start() {
         audioSource = GetComponent<AudioSource>();
+        audioSource.volume = PlayerPrefs.GetFloat("MusicVolume");
         audioSource.clip = menuClip;
         audioSource.Play();
     }
