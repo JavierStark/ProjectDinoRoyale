@@ -6,22 +6,20 @@ using UnityEngine.UI;
 public class VolumeManager : MonoBehaviour
 {
 
-    Slider musicVolSlider;
-    Slider fxVolSlider;
+    [SerializeField] Slider musicVolSlider;
+    [SerializeField] Slider fxVolSlider;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+    private void Start() {
+        musicVolSlider.value = PlayerPrefs.GetFloat("MusicVolume");
+        fxVolSlider.value = PlayerPrefs.GetFloat("FXVolume");
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    public void OnValueChangedMusic() {
+        PlayerPrefs.SetFloat("MusicVolume", musicVolSlider.value);
+        MusicManager.instance.ChangeVolume(musicVolSlider.value);
     }
 
-    void OnValueChangedMusic() {
-
+    public void OnValueChangedFX() {
+        PlayerPrefs.SetFloat("FXVolume", fxVolSlider.value);
     }
 }

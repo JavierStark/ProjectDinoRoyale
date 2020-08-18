@@ -24,6 +24,7 @@ public class MusicManager : MonoBehaviour
     }
 
     public void GameMusic(){
+        audioSource.volume = PlayerPrefs.GetFloat("MusicVolume");
         if(audioSource.clip == gameClip) return;
         else {
         audioSource.clip = gameClip;
@@ -32,10 +33,15 @@ public class MusicManager : MonoBehaviour
     }
 
     public void MenuMusic(){
-        if(audioSource.clip == menuClip) return;
+        audioSource.volume = PlayerPrefs.GetFloat("MusicVolume");
+        if (audioSource.clip == menuClip) return;
         else {
         audioSource.clip = menuClip;
         audioSource.Play();
         }
+    }
+
+    public void ChangeVolume(float volume) {
+        audioSource.volume = volume;
     }
 }
