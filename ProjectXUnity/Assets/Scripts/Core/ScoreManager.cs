@@ -84,7 +84,7 @@ public class ScoreManager : MonoBehaviour
       
         int bonusScore = (10 - Int32.Parse(tmpPosition.text)) * bonus;
         int finalScore = score + bonusScore;
-        gameOverScore.text = (score).ToString() + " + " + bonusScore + " = " + finalScore;        
+        gameOverScore.text = (score).ToString() + " + " + bonusScore + " = " + finalScore;
     }
 
     public void StopScoring() {
