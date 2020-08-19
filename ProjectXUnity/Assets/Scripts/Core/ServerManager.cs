@@ -24,7 +24,7 @@ public class ServerManager : MonoBehaviour
 
     [SerializeField] GameObject loadingPanel;
     GameObject btnPanicQuit;
-    int timeoutLimit = 25;
+    int timeoutLimit = 15;
 
     string conectingMessage = "Trying to connect to the server...";
     string unableConnectMessage = "The server might be down, please try again later...";
@@ -304,6 +304,12 @@ public class ServerManager : MonoBehaviour
         yield return new WaitForSeconds(timeoutLimit);
         loadingPanel.GetComponentInChildren<TMP_Text>().text = unableConnectMessage.ToUpper();
         btnPanicQuit.SetActive(true);
+    }
+
+    public void CancelServerRequest()
+	{
+        StopAllCoroutines();
+        Loading(false);
     }
 
     void InitTempNicknames()
