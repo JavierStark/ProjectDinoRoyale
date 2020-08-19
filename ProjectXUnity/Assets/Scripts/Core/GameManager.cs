@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Runner.Enemy;
+using System.Linq;
 
 namespace Runner.Core {
     public class GameManager : MonoBehaviour {
@@ -58,17 +59,21 @@ namespace Runner.Core {
 		public void GameOver() {
 			ScoreManager.instance.StopScoring();
 			ScoreManager.instance.GameOver();
-			if (!string.IsNullOrEmpty(ServerManager.instance.user.nickname))
+			if (!string.IsNullOrEmpty(ServerManager.instance.user?.nickname))
 			{
 				ServerManager.instance.NewScore();
 			}
-			gameOverCanvas.gameObject.SetActive(true);			
-
+			gameOverCanvas.gameObject.SetActive(true);
+			DesactivateParticles();
 		}
 
 		public float GlobalMultiplier() {
 			return globalMultiplier;
         }
+
+		public void DesactivateParticles() {
+			FindObjectsOfType<ParticleSystem>().Where(p => p.gameObject.name == "WhiteSmoke").First().Pause();
+		}
 
 		//private void Update() {
 
@@ -78,6 +83,6 @@ namespace Runner.Core {
 
 		//	}
 		//}
-    }
+	}
 
 }

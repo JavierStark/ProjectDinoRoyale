@@ -4376,6 +4376,11 @@ PrefabInstance:
       propertyPath: m_margin.z
       value: 34.35202
       objectReference: {fileID: 0}
+    - target: {fileID: 5682314322310586420, guid: 42433e50ae8366a4daef94cab6a45b37,
+        type: 3}
+      propertyPath: m_margin.x
+      value: -30.212795
+      objectReference: {fileID: 0}
     - target: {fileID: 5682314322310586422, guid: 42433e50ae8366a4daef94cab6a45b37,
         type: 3}
       propertyPath: m_Layer
@@ -4405,6 +4410,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_margin.z
       value: 35.81378
+      objectReference: {fileID: 0}
+    - target: {fileID: 5682314322323476660, guid: 42433e50ae8366a4daef94cab6a45b37,
+        type: 3}
+      propertyPath: m_margin.x
+      value: -31.76215
       objectReference: {fileID: 0}
     - target: {fileID: 5682314322323476662, guid: 42433e50ae8366a4daef94cab6a45b37,
         type: 3}
@@ -4471,6 +4481,11 @@ PrefabInstance:
       propertyPath: m_margin.z
       value: 20.918587
       objectReference: {fileID: 0}
+    - target: {fileID: 5682314322440671854, guid: 42433e50ae8366a4daef94cab6a45b37,
+        type: 3}
+      propertyPath: m_margin.x
+      value: -32.53682
+      objectReference: {fileID: 0}
     - target: {fileID: 5682314322458057077, guid: 42433e50ae8366a4daef94cab6a45b37,
         type: 3}
       propertyPath: m_Layer
@@ -4500,6 +4515,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_margin.z
       value: 35.813778
+      objectReference: {fileID: 0}
+    - target: {fileID: 5682314322458057079, guid: 42433e50ae8366a4daef94cab6a45b37,
+        type: 3}
+      propertyPath: m_margin.x
+      value: -31.762154
       objectReference: {fileID: 0}
     - target: {fileID: 5682314322508617123, guid: 42433e50ae8366a4daef94cab6a45b37,
         type: 3}
@@ -4616,6 +4636,11 @@ PrefabInstance:
       propertyPath: m_margin.z
       value: 19.175344
       objectReference: {fileID: 0}
+    - target: {fileID: 5682314322901990888, guid: 42433e50ae8366a4daef94cab6a45b37,
+        type: 3}
+      propertyPath: m_margin.x
+      value: -32.53682
+      objectReference: {fileID: 0}
     - target: {fileID: 5682314322901990890, guid: 42433e50ae8366a4daef94cab6a45b37,
         type: 3}
       propertyPath: m_Layer
@@ -4674,7 +4699,12 @@ PrefabInstance:
     - target: {fileID: 5682314323047757043, guid: 42433e50ae8366a4daef94cab6a45b37,
         type: 3}
       propertyPath: m_fontColor32.rgba
-      value: 4292927712
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 5682314323047757043, guid: 42433e50ae8366a4daef94cab6a45b37,
+        type: 3}
+      propertyPath: m_margin.x
+      value: -31.762209
       objectReference: {fileID: 0}
     - target: {fileID: 5682314323288696965, guid: 42433e50ae8366a4daef94cab6a45b37,
         type: 3}
@@ -4700,6 +4730,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_margin.z
       value: 20.04703
+      objectReference: {fileID: 0}
+    - target: {fileID: 5682314323288696966, guid: 42433e50ae8366a4daef94cab6a45b37,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 103.59
+      objectReference: {fileID: 0}
+    - target: {fileID: 5682314323288696966, guid: 42433e50ae8366a4daef94cab6a45b37,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 225.51791
       objectReference: {fileID: 0}
     - target: {fileID: 5682314323288696967, guid: 42433e50ae8366a4daef94cab6a45b37,
         type: 3}
@@ -4765,6 +4805,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_margin.z
       value: 20.918587
+      objectReference: {fileID: 0}
+    - target: {fileID: 5682314323381108346, guid: 42433e50ae8366a4daef94cab6a45b37,
+        type: 3}
+      propertyPath: m_margin.x
+      value: -30.2128
       objectReference: {fileID: 0}
     - target: {fileID: 5682314323447511479, guid: 42433e50ae8366a4daef94cab6a45b37,
         type: 3}
@@ -4855,6 +4900,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_margin.z
       value: 35.813786
+      objectReference: {fileID: 0}
+    - target: {fileID: 5682314323521325406, guid: 42433e50ae8366a4daef94cab6a45b37,
+        type: 3}
+      propertyPath: m_margin.x
+      value: -32.53682
       objectReference: {fileID: 0}
     - target: {fileID: 5682314323585452946, guid: 42433e50ae8366a4daef94cab6a45b37,
         type: 3}
