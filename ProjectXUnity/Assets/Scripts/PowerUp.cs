@@ -70,11 +70,10 @@ public class PowerUp : MonoBehaviour, IPointerClickHandler
     }
 
     void MeteorPower(){
-        ScoreManager.instance.PayScore(price);
-
         for(int i = 0; i<dinosNumber; i++) {
             bool used = false;
             if (dinosArray[i].IsAlive()) {
+                ScoreManager.instance.PayScore(price);
                 used = true;
                 dinosArray[i].Attacked(diceFaces);
                 print(dinosArray[i].name + " attacked");

@@ -11,6 +11,8 @@ public class ScoreManager : MonoBehaviour
     [SerializeField] TMP_Text gameOverScore;
     [SerializeField] TMP_Text scoreByPosition;
     [SerializeField] public TextMeshProUGUI tmpPosition;
+    [SerializeField] Animator nightAnimator;
+    bool night = false;
     [SerializeField] float scoreDelay;
     [SerializeField] int enemiesAlive = 9;
     public int bonus = 2;
@@ -39,7 +41,7 @@ public class ScoreManager : MonoBehaviour
         //Esto solo lo he puesto x si se nos olvida setearlo desde el editor de Unity, q nunca explote
         if (scoreDelay <= 0)
 		{
-            scoreDelay = 1;
+            scoreDelay = 3;
 		}
 
         tmpPosition.text = "10";
@@ -56,6 +58,7 @@ public class ScoreManager : MonoBehaviour
             yield return new WaitForSeconds(scoreDelay);
             if (!GameManager.instance.IsPlayerAlive) yield return 0;
             score++;
+            if (score%50 == 0) ChangeDayTime();
             if (!GameManager.instance.IsPlayerAlive) yield return 0;
             tmpScore.text = score.ToString();
         } while (GameManager.instance.IsPlayerAlive);
@@ -63,6 +66,8 @@ public class ScoreManager : MonoBehaviour
 
     public void EnemyDied (){
         enemiesAlive--;
+        scoreDelay -= 0.22f;
+        print(scoreDelay);
         tmpPosition.text = (enemiesAlive+1).ToString();
     }
 
@@ -84,10 +89,22 @@ public class ScoreManager : MonoBehaviour
       
         int bonusScore = (10 - Int32.Parse(tmpPosition.text)) * bonus;
         int finalScore = score + bonusScore;
-        gameOverScore.text = (score).ToString() + " + " + bonusScore + " = " + finalScore;        
+        gameOverScore.text = (score).ToString() + " + " + bonusScore + " = " + finalScore;
     }
 
     public void StopScoring() {
         StopCoroutine(increaseScoreCoroutine);
     }
+
+    private void ChangeDayTime() {
+        if (!night) {
+            nightAnimator.SetTrigger("ToNight");
+            night = true;
+        }
+        else {
+            nightAnimator.SetTrigger("ToDay");
+            night = false;
+        }
+    }
+
 }

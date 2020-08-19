@@ -42,12 +42,12 @@ PrefabInstance:
     - target: {fileID: 5087682266015666970, guid: 89a408b611f552a44ace65dc04befb4d,
         type: 3}
       propertyPath: velocity
-      value: 12
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 5400883429449536226, guid: 89a408b611f552a44ace65dc04befb4d,
         type: 3}
       propertyPath: m_Name
-      value: EnemyMeteorite
+      value: EnemyMeteorite1
       objectReference: {fileID: 0}
     - target: {fileID: 7338859024694682496, guid: 89a408b611f552a44ace65dc04befb4d,
         type: 3}
@@ -62,7 +62,7 @@ PrefabInstance:
     - target: {fileID: 7499560799610278495, guid: 89a408b611f552a44ace65dc04befb4d,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.086
       objectReference: {fileID: 0}
     - target: {fileID: 7499560799610278495, guid: 89a408b611f552a44ace65dc04befb4d,
         type: 3}
